@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Infragistics.Framework.DataViewModel">
+    <Position X="3.75" Y="0.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AABAiABAAAECAhACZMAAAAAMIAwAEAAAEQAQEAgQACA=</HashCode>
+      <FileName>Models\DataViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DataSource" />
+      <Property Name="DataView" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Indicators" />
+      <Property Name="Categories" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Infragistics.Framework.DataIndicator">
+    <Position X="9.25" Y="3.75" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAABAACAAEGAAAAAAAAAgAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Models\DataIndicator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Infragistics.Framework.DataColumn" HideInheritanceLine="true">
+    <Position X="9.25" Y="0.75" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAgAAQEAAAAAIAAAAAAAAAAAAAAIAAACAA=</HashCode>
+      <FileName>Models\DataIndicator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Infragistics.Framework.ScatterDataViewModel">
+    <Position X="3.75" Y="5.25" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AgAAAAIAAAAEAAACIAAAFAAAEAQAAMAAAwAAAhAIAFA=</HashCode>
+      <FileName>Models\ScatterDataViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="DataPoints" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Infragistics.Framework.ScatterDataItem">
+    <Position X="0.5" Y="5.25" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAACAAAIEAQAAAAEAAAAAAAAAAAAABAAACAAAAAAYQA=</HashCode>
+      <FileName>Models\ScatterDataItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Collections.Generic.List&lt;T&gt;" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="System.Collections.IEnumerable" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
