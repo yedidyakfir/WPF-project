@@ -25,5 +25,5 @@ namespace StockPriceWinodw
             InitializeComponent();
         }
     }
-}
+}j\
 //yehuda was here
