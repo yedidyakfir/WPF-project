@@ -16,14 +16,13 @@ using System.Windows.Shapes;
 namespace StockPriceWinodw
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CurrencyHistoryUC.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CurrencyHistoryUC : UserControl
     {
-        public MainWindow()
+        public CurrencyHistoryUC()
         {
             InitializeComponent();
         }
     }
 }
-//yehuda was here
