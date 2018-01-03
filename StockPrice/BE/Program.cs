@@ -4,15 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BL
+namespace BE
 {
     class Program
     {
         static void Main(string[] args)
         {
-            BL b = new BL();
-            b.getCoinValue("EUR");
-            Console.ReadKey();
         }
     }
 }
