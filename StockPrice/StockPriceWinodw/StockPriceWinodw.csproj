@@ -36,14 +36,17 @@
   <ItemGroup>
     <Reference Include="ReachFramework" />
     <Reference Include="Syncfusion.Chart.Wpf, Version=15.4460.0.17, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Data.WPF, Version=15.4460.0.17, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Olap.Base, Version=15.4460.0.17, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.OlapChart.WPF, Version=15.4460.0.17, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.OlapShared.WPF, Version=15.4460.0.17, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.SfChart.WPF, Version=15.4460.0.17, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.SfDiagram.WPF, Version=15.4460.0.17, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.SfGrid.WPF, Version=15.4460.0.17, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Shared.Wpf, Version=15.4460.0.17, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Tools.Wpf, Version=15.4460.0.17, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Printing" />
@@ -67,6 +70,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="View\CurrencyValueUC.xaml.cs">
+      <DependentUpon>CurrencyValueUC.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\CurrencyHistoryUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -86,6 +92,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\CurrencyValueUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
