@@ -15,5 +15,6 @@ namespace BE
             value = v;
             date = d;
         }
+        public CoinValue() { }
     }
 }

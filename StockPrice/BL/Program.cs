@@ -9,18 +9,14 @@ namespace BL
 {
     class Program
     {
-        class g
-        {
-            public static List<CoinValue> l = new List<CoinValue>();
-            public List<CoinValue> get() { return l; }
-        };
         static void Main(string[] args)
         {
-            g d = new g();
-            List<CoinValue> l = d.get();
-            l.Add(new CoinValue(23, DateTime.Now));
-            Console.WriteLine(g.l.First().value);
-            Console.WriteLine(g.l.First().date);
+            IBL gogo = new BL();
+            foreach (var cv in gogo.getCoinHistory("ILS"))
+            {
+                Console.WriteLine("Date: " + cv.date.ToString());
+                Console.WriteLine(cv.value);               
+            }
             Console.ReadKey();
         }
     }

@@ -15,5 +15,6 @@ namespace BE
             name = n;
             History = new List<CoinValue>(l);
         }
+        public Coin() { }
     };
 }

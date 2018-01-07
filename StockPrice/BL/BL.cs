@@ -9,10 +9,13 @@ using DL;
 
 namespace BL
 {
-    class BL
+    class BL:IBL
     {
         private IDL Dal = new DAL();
-
+        public BL()
+        {
+                Dal.Load();
+        }
         public CoinValue getCoinValue(string coin)
         {
             try
@@ -24,8 +27,12 @@ namespace BL
                 apiResponse = apiResponse.Substring(index + 8, 8);
                 double value = Double.Parse(apiResponse);
                 value = 1 / value;
-                List<CoinValue> l = getCoinHistory(coin);
-                l.Add(new CoinValue(value, DateTime.Now));
+                try
+                {
+                    List<CoinValue> l = getCoinHistory(coin);
+                    l.Add(new CoinValue(value, DateTime.Now));
+                }
+                catch (Exception) { }
                 return new CoinValue(value, DateTime.Now);
             }
             catch (Exception)//incase there's a problam with the internet
@@ -36,7 +43,7 @@ namespace BL
                 throw new Exception("There is no internet and the coin wasn't saved in the database");
             }
         }
-        public double relation(string coin1, string coin2, int amount)
+        public double Relation(string coin1, string coin2, double amount)
         {
             return (getCoinValue(coin1).value / getCoinValue(coin2).value) * amount;
         }
@@ -48,12 +55,12 @@ namespace BL
                     return Dal.getCoinHistory(coin);
 
                 DateTime t = DateTime.Now;
-                t.AddYears(-3);
+                t = t.AddYears(-3);
                 string url;
                 WebClient wc;
                 List<CoinValue> l = new List<CoinValue>();
                                 
-                for (int i = 0; i < 36; i++,t.AddMonths(1))
+                for (int i = 0; i < 36; i++)
                 {
                     url = "http://apilayer.net/api/historical?" +
                         "access_key=0c54679e2255988cd03b9ed59129983a" +
@@ -68,11 +75,13 @@ namespace BL
                     double value = Double.Parse(apiResponse);
                     value = 1 / value;
                     l.Add(new CoinValue(value, t));
+                    t = t.AddMonths(1);
                 }
                 Dal.AddCoin(new Coin(coin, l));
+                Dal.Save();
                 return l;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 throw new Exception("There is no internet and the coin wasn't saved in the database");
             }
@@ -90,8 +99,4 @@ namespace BL
                 apiResponse = apiResponse.Substring(index + 2);
                 apiResponse = apiResponse.Substring(0, 4);
                 wc.Dispose();
-                return Double.Parse(apiResponse); g
-                    u
-                    n
-                    c
-                    h*/
+                return Double.Parse(apiResponse);*/
