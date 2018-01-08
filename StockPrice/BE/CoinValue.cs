@@ -17,4 +17,15 @@ namespace BE
         }
         public CoinValue() { }
     }
+    public class CurrentCoinValue : CoinValue
+    {
+        public string name;
+        public CurrentCoinValue(string n, double v, DateTime d)
+        {
+            name = n;
+            value = v;
+            date = d;
+        }
+        public CurrentCoinValue() { }
+    }
 }

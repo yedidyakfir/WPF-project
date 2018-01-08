@@ -13,5 +13,7 @@ namespace DL
         void AddCoin(Coin c);
         void Save();
         void Load();
+        void addCurrentCoinValue(CurrentCoinValue c);
+        List<CurrentCoinValue> getCurrentCoins();
     }
 }

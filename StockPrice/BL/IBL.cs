@@ -13,7 +13,7 @@ namespace BL
         double Relation(string inputCurrency, string outputCurrency, double value);
 
         //returns the CoinValue of 'coin', in the date closest to 'date'
-        List<CoinValue> getCoinsValue();
+        List<CurrentCoinValue> getCoinsValue();
 
         //returns a list of CoinValue of the coin
         List<CoinValue> getCoinHistory(string coin);  

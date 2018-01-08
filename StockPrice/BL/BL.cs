@@ -87,9 +87,37 @@ namespace BL
             }
         }
 
-        public List<CoinValue> getCoinsValue()
+        public List<CurrentCoinValue> getCoinsValue()
         {
-            throw new NotImplementedException();
+            /*CoinValue g = getCoinValue("EUR");
+            CurrentCoinValue c = new CurrentCoinValue("EUR", g.value, g.date);
+            Dal.addCurrentCoinValue(c);
+
+            g = getCoinValue("JPY");
+            c = new CurrentCoinValue("JPY", g.value, g.date);
+            Dal.addCurrentCoinValue(c);
+
+            g = getCoinValue("GBP");
+            c = new CurrentCoinValue("GBP", g.value, g.date);
+            Dal.addCurrentCoinValue(c);
+
+            g = getCoinValue("CHF");
+            c = new CurrentCoinValue("CHF", g.value, g.date);
+            Dal.addCurrentCoinValue(c);
+
+            g = getCoinValue("CAD");
+            c = new CurrentCoinValue("CAD", g.value, g.date);
+            Dal.addCurrentCoinValue(c);
+
+            g = getCoinValue("ZAR");
+            c = new CurrentCoinValue("EUR", g.value, g.date);
+            Dal.addCurrentCoinValue(c);
+
+            g = getCoinValue("ILS");
+            c = new CurrentCoinValue("EUR", g.value, g.date);
+            Dal.addCurrentCoinValue(c);
+            Dal.Save();*/
+            return Dal.getCurrentCoins();
         }
     }
 }
