@@ -72,6 +72,7 @@
     </ApplicationDefinition>
     <Compile Include="converter\TextConverter.cs" />
     <Compile Include="Model\CoinModel.cs" />
+    <Compile Include="ViewModel\CoinHistoryViewModel.cs" />
     <Compile Include="ViewModel\CoinsViewModel.cs" />
     <Compile Include="View\CurrencyValueUC.xaml.cs">
       <DependentUpon>CurrencyValueUC.xaml</DependentUpon>

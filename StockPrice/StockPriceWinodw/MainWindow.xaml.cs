@@ -24,8 +24,7 @@ namespace StockPriceWinodw
         public MainWindow()
         {
             InitializeComponent();
-            CoinList.Content = new CurrencyValueUC();
+            HistoryGraph.Content = new CurrencyHistoryUC();
         }
     }
 }
-//yehuda was here

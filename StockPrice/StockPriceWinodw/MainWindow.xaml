@@ -8,6 +8,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <ContentControl Name="CoinList" Content="" HorizontalAlignment="Left" Margin="24,34,0,0" VerticalAlignment="Top" Height="180" Width="311"/>
+        <ContentControl Name="HistoryGraph" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Height="319" Width="517"/>
     </Grid>
 </Window>
