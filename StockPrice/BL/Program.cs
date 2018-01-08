@@ -12,11 +12,7 @@ namespace BL
         static void Main(string[] args)
         {
             IBL gogo = new BL();
-            foreach (var cv in gogo.getCoinHistory("ILS"))
-            {
-                Console.WriteLine("Date: " + cv.date.ToString());
-                Console.WriteLine(cv.value);               
-            }
+            gogo.getCoinsValue();
             Console.ReadKey();
         }
     }

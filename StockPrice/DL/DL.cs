@@ -12,6 +12,7 @@ namespace DL
     public class DAL:IDL
     {
         public List<Coin> DB;
+        public List<CurrentCoinValue> CurrentCoins;
         public List<CoinValue> getCoinHistory(string coin)
         {
             foreach (Coin c in DB)
@@ -19,6 +20,10 @@ namespace DL
                     return c.History;
             return null;
         }
+        public void addCurrentCoinValue(CurrentCoinValue c)
+        { CurrentCoins.Add(c); }
+        public List<CurrentCoinValue> getCurrentCoins()
+        { return CurrentCoins; }
         public void AddCoin(Coin c)
         {
             DB.Add(c);
@@ -31,9 +36,15 @@ namespace DL
         {
             DAL dal = ReadFromXmlFile<DAL>("DataBase");
             if (dal.DB == null)
-                DB = new List<Coin>();   
+            {
+                DB = new List<Coin>();
+                CurrentCoins = new List<CurrentCoinValue>();
+            }
             else
+            {
                 DB = dal.DB;
+                CurrentCoins = dal.CurrentCoins;
+            }
         }
         public static void WriteToXmlFile<T>(string filePath, T objectToWrite, bool append = false) where T : new()
         {
