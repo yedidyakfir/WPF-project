@@ -18,5 +18,7 @@ namespace BL
         //returns a list of CoinValue of the coin
         List<CoinValue> getCoinHistory(string coin);  
 
+        void addCurrentCoinValue(CurrentCoinValue c);
+
     }
 }

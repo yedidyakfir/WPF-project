@@ -119,6 +119,8 @@ namespace BL
             Dal.Save();*/
             return Dal.getCurrentCoins();
         }
+        public void addCurrentCoinValue(CurrentCoinValue c)
+        { Dal.addCurrentCoinValue(c); }
     }
 }
 /*string request = String.Format("http://www.xe.com/ucc/convert.cgi?Amount={0}&From={1}&To={2}", value, inputCurrency, outputCurrency);
