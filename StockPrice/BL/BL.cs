@@ -86,6 +86,11 @@ namespace BL
                 throw new Exception("There is no internet and the coin wasn't saved in the database");
             }
         }
+
+        public List<CoinValue> getCoinsValue()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 /*string request = String.Format("http://www.xe.com/ucc/convert.cgi?Amount={0}&From={1}&To={2}", value, inputCurrency, outputCurrency);
