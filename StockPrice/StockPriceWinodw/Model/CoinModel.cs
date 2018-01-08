@@ -6,8 +6,17 @@ using System.Threading.Tasks;
 
 namespace StockPriceWinodw.Model
 {
-    class CoinModel
+    internal class CoinModel
     {
+        public string coin { get; private set; }
+        public DateTime lastUpdate { get; private set; }
+        public double value { get; private set; }
 
+        public CoinModel(string c,DateTime d,double v)
+        {
+            coin = c;
+            lastUpdate = d;
+            value = v;
+        }
     }
 }

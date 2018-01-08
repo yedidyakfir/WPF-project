@@ -10,10 +10,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
         <DataTemplate x:Key="labelTemplate">
-            <StackPanel>                
-                <TextBlock HorizontalAlignment="Center" Text="{Binding Converter={StaticResource textConverter}, ConverterParameter=0}" FontSize="12"/>
-                <TextBlock HorizontalAlignment="Center"  Text="{Binding Converter={StaticResource textConverter}, ConverterParameter=1}" FontSize="16"/>
-            </StackPanel>
+
         </DataTemplate>
         <SolidColorBrush x:Key="YAxisLabelBackground" Color="#FF676767"/>
         <SolidColorBrush x:Key="XAxisLabelBackground" Color="#FF85C775"/>

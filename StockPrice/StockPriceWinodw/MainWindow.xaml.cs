@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using StockPriceWinodw.View;
 
 namespace StockPriceWinodw
 {
@@ -23,6 +24,7 @@ namespace StockPriceWinodw
         public MainWindow()
         {
             InitializeComponent();
+            CoinList.Content = new CurrencyValueUC();
         }
     }
 }
