@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using StockPriceWinodw.View;
 
 namespace StockPriceWinodw
 {
@@ -23,7 +24,7 @@ namespace StockPriceWinodw
         public MainWindow()
         {
             InitializeComponent();
+            HistoryGraph.Content = new CurrencyHistoryUC();
         }
     }
 }
-//yehuda was here

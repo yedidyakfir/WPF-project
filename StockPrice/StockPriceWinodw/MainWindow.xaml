@@ -8,8 +8,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-
-        <syncfusion:SfDataGrid HorizontalAlignment="Left" Height="100" Margin="154,184,0,0" VerticalAlignment="Top" Width="100"/>
-
+        <ContentControl Name="HistoryGraph" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Height="319" Width="517"/>
     </Grid>
 </Window>

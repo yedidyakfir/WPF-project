@@ -70,7 +70,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="converter\TextConverter.cs" />
     <Compile Include="Model\CoinModel.cs" />
+    <Compile Include="ViewModel\CoinHistoryViewModel.cs" />
+    <Compile Include="ViewModel\CoinsViewModel.cs" />
     <Compile Include="View\CurrencyValueUC.xaml.cs">
       <DependentUpon>CurrencyValueUC.xaml</DependentUpon>
     </Compile>
@@ -124,8 +127,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="ViewModel\" />
+    <ProjectReference Include="..\BE\BE.csproj">
+      <Project>{17ef272c-525a-4593-9ef4-cc9844529611}</Project>
+      <Name>BE</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

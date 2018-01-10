@@ -4,17 +4,22 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:StockPriceWinodw"
+             xmlns:Converter="clr-namespace:StockPriceWinodw.converter"
              xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="StockPriceWinodw.CurrencyHistoryUC"
              xmlns:charts="clr-namespace:Syncfusion.UI.Xaml.Charts;assembly=Syncfusion.SfChart.WPF"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" Width="500">
     <UserControl.Resources>
+        <Converter:TextConverter x:Key="textConverter"/>
+
+
         <DataTemplate x:Key="labelTemplate">
-            <StackPanel>                
+            <StackPanel>
                 <TextBlock HorizontalAlignment="Center" Text="{Binding Converter={StaticResource textConverter}, ConverterParameter=0}" FontSize="12"/>
                 <TextBlock HorizontalAlignment="Center"  Text="{Binding Converter={StaticResource textConverter}, ConverterParameter=1}" FontSize="16"/>
             </StackPanel>
         </DataTemplate>
+
         <SolidColorBrush x:Key="YAxisLabelBackground" Color="#FF676767"/>
         <SolidColorBrush x:Key="XAxisLabelBackground" Color="#FF85C775"/>
         <Style x:Key="majorTickStyle" TargetType="Line">
@@ -153,9 +158,6 @@
 
             <charts:SfChart.RowDefinitions>
                 <charts:ChartRowDefinition Height="1" BorderThickness="1" BorderStroke="#FFD8E5F2"></charts:ChartRowDefinition>
-                <charts:ChartRowDefinition Height="1" BorderThickness="1" BorderStroke="#FFD8E5F2"></charts:ChartRowDefinition>
-                <charts:ChartRowDefinition Height="1" BorderThickness="1" BorderStroke="#FFD8E5F2"></charts:ChartRowDefinition>
-                <charts:ChartRowDefinition Height="1" BorderThickness="1" BorderStroke="#FFD8E5F2"></charts:ChartRowDefinition>
             </charts:SfChart.RowDefinitions>
 
 
@@ -164,29 +166,27 @@
             </charts:SfChart.Behaviors>
 
             <charts:SfChart.PrimaryAxis>
-                <charts:CategoryAxis PlotOffset="10" BorderBrush="White"  Foreground="White" ShowTrackBallInfo="True" AxisLineStyle="{StaticResource axisLineStyle}" TrackBallLabelTemplate="{StaticResource xLabel}" ShowGridLines="False" TickLineSize="0" LabelTemplate="{StaticResource labelTemplate}" Interval="1"  ZoomFactor="0.08" Background="{StaticResource XAxisLabelBackground}"></charts:CategoryAxis>
+                <charts:CategoryAxis PlotOffset="10" BorderBrush="White"  Foreground="White" ShowTrackBallInfo="True" AxisLineStyle="{StaticResource axisLineStyle}" TrackBallLabelTemplate="{StaticResource xLabel}" ShowGridLines="False" TickLineSize="0" LabelTemplate="{StaticResource labelTemplate}" Interval="8"  ZoomFactor="0.08" Background="{StaticResource XAxisLabelBackground}"></charts:CategoryAxis>
             </charts:SfChart.PrimaryAxis>
 
             <charts:SfChart.SecondaryAxis>
                 <charts:NumericalAxis ShowTrackBallInfo="True" LabelFormat="#" Foreground="White"
                                   LabelTemplate="{StaticResource yAxisTemplate}"
                                      TrackBallLabelTemplate="{StaticResource yLabel}" charts:SfChart.Row="3" AxisLineStyle="{StaticResource lineStyle2}"
-                                     PlotOffset="10" Interval="30" ShowGridLines="False" LabelExtent="30" 
-                                     TickLineSize="0" SmallTickLineSize="0" Minimum="10" Maximum="40">
+                                     PlotOffset="10" Interval="1" ShowGridLines="False" LabelExtent="30" 
+                                     TickLineSize="0" SmallTickLineSize="0" Minimum="0" Maximum="10">
                     <charts:NumericalAxis.Header>
                         <Grid RenderTransformOrigin="0.5,0.5" >
                             <Grid.RenderTransform>
                                 <RotateTransform Angle="90"/>
                             </Grid.RenderTransform>
-                            <Ellipse Fill="#FF1BA1E2" Width="25" Height="25"/>
-                            <TextBlock Text="Sat" FontSize="10" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
                     </charts:NumericalAxis.Header>
                 </charts:NumericalAxis>
             </charts:SfChart.SecondaryAxis>
 
 
-            <charts:FastLineSeries ItemsSource="{Binding HealthDetails}" TrackBallLabelTemplate="{StaticResource trackBallLabel}"  XBindingPath="DateTime" YBindingPath="Sat" StrokeThickness="3" >
+            <charts:FastLineSeries Name="LineGraph" ItemsSource="{Binding history}" TrackBallLabelTemplate="{StaticResource trackBallLabel}"  XBindingPath="lastUpdate" YBindingPath="value" StrokeThickness="3" >
                 <charts:FastLineSeries.AdornmentsInfo>
                     <charts:ChartAdornmentInfo  ShowMarker="True" SymbolHeight="10" SymbolWidth="10">
                         <charts:ChartAdornmentInfo.SymbolTemplate>
@@ -197,87 +197,6 @@
                     </charts:ChartAdornmentInfo>
                 </charts:FastLineSeries.AdornmentsInfo>
             </charts:FastLineSeries>
-
-            <charts:FastLineSeries ItemsSource="{Binding HealthDetails}" XBindingPath="DateTime" YBindingPath="RR" TrackBallLabelTemplate="{StaticResource trackBallLabel}" StrokeThickness="3">
-                <charts:FastLineSeries.YAxis>
-                    <charts:NumericalAxis charts:SfChart.Row="2" ShowTrackBallInfo="True" LabelTemplate="{StaticResource yAxisTemplate}" AxisLineStyle="{StaticResource lineStyle2}" TrackBallLabelTemplate="{StaticResource yLabel}" TickLineSize="0" SmallTickLineSize="0" 
-                                     LabelFormat="#" LabelExtent="30" PlotOffset="10" Interval="60" Minimum="40" Maximum="100" ShowGridLines="False">
-                        <charts:NumericalAxis.Header>
-                            <Grid RenderTransformOrigin="0.5,0.5">
-                                <Grid.RenderTransform>
-                                    <RotateTransform Angle="90"/>
-                                </Grid.RenderTransform>
-                                <Ellipse Fill="#FFA05000" Width="25" Height="25"/>
-                                <TextBlock Text="RR" FontSize="10" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Grid>
-                        </charts:NumericalAxis.Header>
-                    </charts:NumericalAxis>
-                </charts:FastLineSeries.YAxis>
-                <charts:FastLineSeries.AdornmentsInfo>
-                    <charts:ChartAdornmentInfo  ShowMarker="True" SymbolHeight="10" SymbolWidth="10">
-                        <charts:ChartAdornmentInfo.SymbolTemplate>
-                            <DataTemplate>
-                                <Ellipse Height="10" Width="10" Fill="#FFA0562A" Stroke="White" StrokeThickness="2"/>
-                            </DataTemplate>
-                        </charts:ChartAdornmentInfo.SymbolTemplate>
-                    </charts:ChartAdornmentInfo>
-                </charts:FastLineSeries.AdornmentsInfo>
-            </charts:FastLineSeries>
-
-            <charts:FastLineSeries ItemsSource="{Binding HealthDetails}" XBindingPath="DateTime" YBindingPath="HR" TrackBallLabelTemplate="{StaticResource trackBallLabel}" StrokeThickness="3">
-                <charts:FastLineSeries.YAxis>
-                    <charts:NumericalAxis charts:SfChart.Row="1" LabelExtent="30" LabelTemplate="{StaticResource yAxisTemplate}" AxisLineStyle="{StaticResource lineStyle2}"  LabelFormat="#" ShowTrackBallInfo="True" TrackBallLabelTemplate="{StaticResource yLabel}" TickLineSize="0" SmallTickLineSize="0" PlotOffset="10" Interval="100" Minimum="100" Maximum="200" ShowGridLines="False">
-                        <charts:NumericalAxis.Header>
-                            <Grid RenderTransformOrigin="0.5,0.5" >
-                                <Grid.RenderTransform>
-                                    <RotateTransform Angle="90"/>
-                                </Grid.RenderTransform>
-                                <Ellipse Fill="#FF339333" Width="25" Height="25"/>
-                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <TextBlock Text="HR" FontSize="10" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Grid>
-                        </charts:NumericalAxis.Header>
-                    </charts:NumericalAxis>
-                </charts:FastLineSeries.YAxis>
-                <charts:FastLineSeries.AdornmentsInfo>
-                    <charts:ChartAdornmentInfo  ShowMarker="True" SymbolHeight="10" SymbolWidth="10">
-                        <charts:ChartAdornmentInfo.SymbolTemplate>
-                            <DataTemplate>
-                                <Ellipse Height="10" Width="10" Fill="#FF359E47" Stroke="White" StrokeThickness="2"/>
-                            </DataTemplate>
-                        </charts:ChartAdornmentInfo.SymbolTemplate>
-                    </charts:ChartAdornmentInfo>
-                </charts:FastLineSeries.AdornmentsInfo>
-            </charts:FastLineSeries>
-
-            <charts:FastLineSeries ItemsSource="{Binding HealthDetails}" XBindingPath="DateTime" YBindingPath="Temp" TrackBallLabelTemplate="{StaticResource trackBallLabel}" StrokeThickness="3">
-
-                <charts:FastLineSeries.YAxis>
-                    <charts:NumericalAxis charts:SfChart.Row="0" ShowTrackBallInfo="True" LabelTemplate="{StaticResource yAxisTemplate}" AxisLineStyle="{StaticResource lineStyle2}" TrackBallLabelTemplate="{StaticResource yLabel}" TickLineSize="0" 
-                                     LabelFormat="#" LabelExtent="30" SmallTickLineSize="0" PlotOffset="10" Interval="70" Minimum="36" Maximum="106" ShowGridLines="False">
-                        <charts:NumericalAxis.Header>
-                            <Grid RenderTransformOrigin="0.5,0.5">
-                                <Grid.RenderTransform>
-                                    <RotateTransform Angle="90"/>
-                                </Grid.RenderTransform>
-                                <Ellipse Fill="#A2C139" Width="25" Height="25"/>
-                                <TextBlock Text="Temp" FontSize="10" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Grid>
-                        </charts:NumericalAxis.Header>
-                    </charts:NumericalAxis>
-                </charts:FastLineSeries.YAxis>
-                <charts:FastLineSeries.AdornmentsInfo>
-                    <charts:ChartAdornmentInfo  ShowMarker="True" SymbolHeight="10" SymbolWidth="10">
-                        <charts:ChartAdornmentInfo.SymbolTemplate>
-                            <DataTemplate>
-                                <Ellipse Height="10" Width="10" Fill="#FFA1C03A" Stroke="White" StrokeThickness="2"/>
-                            </DataTemplate>
-                        </charts:ChartAdornmentInfo.SymbolTemplate>
-                    </charts:ChartAdornmentInfo>
-                </charts:FastLineSeries.AdornmentsInfo>
-            </charts:FastLineSeries>
-
         </charts:SfChart>
     </Grid>
 </UserControl>
