@@ -18,7 +18,8 @@ namespace BL
         }
         public CoinValue getCoinValue(string coin)
         {
-            try
+            return Dal.getCoinValue(coin);
+            /*try
             {
                 string url = "http://apilayer.net/api/live?access_key=0c54679e2255988cd03b9ed59129983a&currencies=" + coin + "&source=USD&format=1";
                 WebClient wc = new WebClient();
@@ -41,7 +42,7 @@ namespace BL
                 if (Dal.getCoinHistory(coin) != null)
                     return Dal.getCoinHistory(coin).Last();
                 throw new Exception("There is no internet and the coin wasn't saved in the database");
-            }
+            }*/
         }
         public double Relation(string coin1, string coin2, double amount)
         {
@@ -49,7 +50,8 @@ namespace BL
         }
         public List<CoinValue> getCoinHistory(string coin)
         {
-            try
+            return Dal.getCoinHistory(coin);
+         /*   try
             {           
                 if (Dal.getCoinHistory(coin) != null)
                     return Dal.getCoinHistory(coin);
@@ -84,7 +86,7 @@ namespace BL
             catch (Exception e)
             {
                 throw new Exception("There is no internet and the coin wasn't saved in the database");
-            }
+            }*/
         }
 
         public List<CurrentCoinValue> getCoinsValue()
