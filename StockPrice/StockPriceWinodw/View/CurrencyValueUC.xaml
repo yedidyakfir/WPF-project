@@ -6,11 +6,13 @@
              xmlns:local="clr-namespace:StockPriceWinodw.View"
              xmlns:local1="clr-namespace:StockPriceWinodw.converter"
              xmlns:grid="clr-namespace:Syncfusion;assembly=Syncfusion.SfGrid.WPF"
-             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
-             mc:Ignorable="d" Height="320" Width="360">
+             xmlns:syncfusion1="http://schemas.syncfusion.com/wpf"
+             xmlns:Converter="clr-namespace:StockPriceWinodw.converter"
+             mc:Ignorable="d" Height="320" Width="970">
     <UserControl.Resources>
-        <syncfusion:SortDirectionToVisibilityConverter x:Key="sortDirectionToVisibilityConverter" />
-        <syncfusion:SortDirectionToWidthConverter x:Key="sortDirectionToWidthConverter" />
+        <Converter:TextConverter x:Key="textConverter"></Converter:TextConverter>
+        <syncfusion1:SortDirectionToVisibilityConverter x:Key="sortDirectionToVisibilityConverter" />
+        <syncfusion1:SortDirectionToWidthConverter x:Key="sortDirectionToWidthConverter" />
         <DataTemplate x:Key="labelTemplate">
             <StackPanel>
                 <TextBlock HorizontalAlignment="Center"
@@ -274,7 +276,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style TargetType="syncfusion:GridHeaderCellControl">
+        <Style TargetType="syncfusion1:GridHeaderCellControl">
             <Setter Property="Background" Value="#FF33789E" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="FontFamily" Value="Segoe UI" />
@@ -284,7 +286,7 @@
 
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="syncfusion:GridHeaderCellControl">
+                    <ControlTemplate TargetType="syncfusion1:GridHeaderCellControl">
                         <Border Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}">
@@ -373,10 +375,10 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style TargetType="syncfusion:VirtualizingCellsControl">
+        <Style TargetType="syncfusion1:VirtualizingCellsControl">
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="syncfusion:VirtualizingCellsControl">
+                    <ControlTemplate TargetType="syncfusion1:VirtualizingCellsControl">
                         <Grid>
                             <Border 
                                     BorderBrush="{TemplateBinding RowHoverBackgroundBrush}"
@@ -402,7 +404,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style TargetType="syncfusion:GridCell">
+        <Style TargetType="syncfusion1:GridCell">
             <Setter Property="BorderThickness" Value="0,0.5" />
             <Setter Property="BorderBrush" Value="#FFD3D3D3" />
             <Setter Property="FontFamily" Value="Segoe UI Light" />
@@ -410,10 +412,9 @@
             <Setter Property="Padding" Value="5" />
             <Setter Property="Height" Value="40" />
         </Style>
-
     </UserControl.Resources>
     <Grid>
-        <syncfusion:SfDataGrid x:Name="syncgrid" SelectionChanged="syncgrid_SelectionChanged"
+        <syncfusion1:SfDataGrid x:Name="syncgrid" SelectionChanged="syncgrid_SelectionChanged"
                                Grid.Row="0"
                                Margin="0,0,0,0"
                                AllowFiltering="False"
@@ -430,18 +431,18 @@
                                RowSelectionBrush="#FF8CC63F"
                                SelectedItem="{Binding SelectedCoin,
                                                       Mode=TwoWay}">
-            <syncfusion:SfDataGrid.Columns>
-                <syncfusion:GridTextColumn HeaderText="Currency"
+            <syncfusion1:SfDataGrid.Columns>
+                <syncfusion1:GridTextColumn HeaderText="Currency"
                                            MappingName="coin"
                                            HorizontalHeaderContentAlignment ="Center" />
-                <syncfusion:GridTextColumn HeaderText="Last Updated"
+                <syncfusion1:GridTextColumn HeaderText="Last Updated"
                                            HorizontalHeaderContentAlignment="Center"
                                            MappingName="lastUpdate" />
-                <syncfusion:GridTextColumn HeaderText="Value"
+                <syncfusion1:GridTextColumn HeaderText="Value"
                                            HorizontalHeaderContentAlignment="Center"
                                            MappingName="value" />
-            </syncfusion:SfDataGrid.Columns>
-        </syncfusion:SfDataGrid>
+            </syncfusion1:SfDataGrid.Columns>
+        </syncfusion1:SfDataGrid>
 
     </Grid>
 </UserControl>

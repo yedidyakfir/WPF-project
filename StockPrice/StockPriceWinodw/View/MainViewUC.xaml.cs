@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,20 +13,29 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using StockPriceWinodw.Model;
 using StockPriceWinodw.ViewModel;
 
 namespace StockPriceWinodw.View
 {
     /// <summary>
-    /// Interaction logic for CurrencyHistoryUC.xaml
+    /// Interaction logic for MainViewUC.xaml
     /// </summary>
-    public partial class CurrencyHistoryUC : UserControl
+    public partial class MainViewUC : UserControl
     {
-        public CurrencyHistoryUC()
+        public MainViewUC()
         {
             InitializeComponent();
-            LineGraph.DataContext = new CoinHistoryViewModel();
-            //YAxisName.Text = LineGraph.DataContext.ToString();
+            CurrencyList.PropertyChanged += ChangeCurrency;
+        }
+
+        internal void ChangeCurrency(object coinObj, PropertyChangedEventArgs arg)
+        {
+            if ((coinObj is CoinModel))
+                return;
+            CoinModel coin = (CoinModel)coinObj;
+
+            History.LineGraph.DataContext = new CoinHistoryViewModel(coin.ToString(),"Day");
         }
     }
 }

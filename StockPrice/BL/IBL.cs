@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BL
 {
-    interface IBL
+    public interface IBL
     {
         //returns the relation (coin1/coin2)*amount
         double Relation(string inputCurrency, string outputCurrency, double value);
