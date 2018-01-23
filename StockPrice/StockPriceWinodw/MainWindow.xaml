@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:StockPriceWinodw"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="StockPriceWinodw.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="700" Width="1000">
     <Grid>
-        <ContentControl Name="HistoryGraph" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Height="319" Width="517"/>
+        <ContentControl Name="HistoryGraph" Margin="0,0,0,0" Height="200" VerticalAlignment="Bottom"/>
     </Grid>
 </Window>

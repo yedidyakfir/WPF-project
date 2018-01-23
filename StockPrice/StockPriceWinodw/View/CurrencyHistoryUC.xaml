@@ -5,10 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:StockPriceWinodw"
              xmlns:Converter="clr-namespace:StockPriceWinodw.converter"
+             xmlns:Behaviors="clr-namespace:StockPriceWinodw.Behaviors"
              xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="StockPriceWinodw.CurrencyHistoryUC"
              xmlns:charts="clr-namespace:Syncfusion.UI.Xaml.Charts;assembly=Syncfusion.SfChart.WPF"
              mc:Ignorable="d" 
-             d:DesignHeight="300" Width="500">
+             d:DesignHeight="200" Width="1000">
     <UserControl.Resources>
         <Converter:TextConverter x:Key="textConverter"/>
 
@@ -163,10 +164,14 @@
 
             <charts:SfChart.Behaviors>
                 <charts:ChartZoomPanBehavior ResetOnDoubleTap="False" ZoomMode="X"></charts:ChartZoomPanBehavior>
+                <Behaviors:CustomTrackBallBehavior LabelVerticalAlignment="Far"  LabelHorizontalAlignment="Near"  LineStyle="{StaticResource trackerLineStyle}" CustomLabelTemplate="{StaticResource customLabel}" UseSeriesPalette="True"></Behaviors:CustomTrackBallBehavior>
             </charts:SfChart.Behaviors>
 
             <charts:SfChart.PrimaryAxis>
-                <charts:CategoryAxis PlotOffset="10" BorderBrush="White"  Foreground="White" ShowTrackBallInfo="True" AxisLineStyle="{StaticResource axisLineStyle}" TrackBallLabelTemplate="{StaticResource xLabel}" ShowGridLines="False" TickLineSize="0" LabelTemplate="{StaticResource labelTemplate}" Interval="8"  ZoomFactor="0.08" Background="{StaticResource XAxisLabelBackground}"></charts:CategoryAxis>
+                <charts:DateTimeAxis IntervalType="Days" BorderBrush="White" Foreground="White" ShowTrackBallInfo="True"
+                                     AxisLineStyle="{StaticResource axisLineStyle}" TrackBallLabelTemplate="{StaticResource xLabel}"
+                                     ShowGridLines="False" TickLineSize="0" LabelTemplate="{StaticResource labelTemplate}" Background="{StaticResource XAxisLabelBackground}"></charts:DateTimeAxis>
+                <!--<charts:CategoryAxis PlotOffset="10" BorderBrush="White"  Foreground="White" ShowTrackBallInfo="True" AxisLineStyle="{StaticResource axisLineStyle}" TrackBallLabelTemplate="{StaticResource xLabel}" ShowGridLines="False" TickLineSize="0" LabelTemplate="{StaticResource labelTemplate}" Interval="8"  ZoomFactor="0.08" Background="{StaticResource XAxisLabelBackground}"></charts:CategoryAxis>-->
             </charts:SfChart.PrimaryAxis>
 
             <charts:SfChart.SecondaryAxis>
