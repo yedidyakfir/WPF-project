@@ -37,5 +37,26 @@ namespace StockPriceWinodw.View
 
             History.LineGraph.DataContext = new CoinHistoryViewModel(coin.ToString(),"Day");
         }
+
+        private void Year_Click(object sender, RoutedEventArgs e)
+        {
+            Year.IsChecked = true;
+            Day.IsChecked = false;
+            Month.IsChecked = false;
+        }
+
+        private void Month_Click(object sender, RoutedEventArgs e)
+        {
+            Year.IsChecked = false;
+            Day.IsChecked = false;
+            Month.IsChecked = true;
+        }
+
+        private void Day_Click(object sender, RoutedEventArgs e)
+        {
+            Year.IsChecked = false;
+            Day.IsChecked = true;
+            Month.IsChecked = false;
+        }
     }
 }

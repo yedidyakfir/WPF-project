@@ -441,6 +441,9 @@
                 <syncfusion1:GridTextColumn HeaderText="Value"
                                            HorizontalHeaderContentAlignment="Center"
                                            MappingName="value" />
+                <syncfusion1:GridTextColumn HeaderText="Trend"
+                                           HorizontalHeaderContentAlignment="Center"
+                                           MappingName="trend" />
             </syncfusion1:SfDataGrid.Columns>
         </syncfusion1:SfDataGrid>
 

@@ -43,7 +43,8 @@
                               FontWeight="SemiBold"
                               Foreground="Black"
                               IsChecked="True"
-                              Padding="10">
+                              Padding="10"
+                              Click="Day_Click">
                     <ToggleButton.Template>
                         <ControlTemplate TargetType="{x:Type ToggleButton}">
                             <Grid>
@@ -105,11 +106,9 @@
                               FontFamily="Segoe UI Light"
                               FontSize="14"
                               Foreground="Black"
-                              IsChecked="{Binding ElementName=Day,
-                                                  Path=IsChecked,
-                                                  Converter={StaticResource toggleConv},
-                                                  Mode=TwoWay}"
-                              Padding="10">
+                              IsChecked="False"
+                              Padding="10"
+                              Click="Month_Click">
                     <ToggleButton.Template>
                         <ControlTemplate TargetType="{x:Type ToggleButton}">
                             <Grid>
@@ -177,11 +176,9 @@
                               FontFamily="Segoe UI Light"
                               FontSize="14"
                               Foreground="Black"
-                              IsChecked="{Binding ElementName=Day,
-                                                  Path=IsChecked,
-                                                  Converter={StaticResource toggleConv},
-                                                  Mode=TwoWay}"
-                              Padding="10">
+                              IsChecked="false"
+                              Padding="10" Click="Year_Click"
+                              >
                     <ToggleButton.Template>
                         <ControlTemplate TargetType="{x:Type ToggleButton}">
                             <Grid>

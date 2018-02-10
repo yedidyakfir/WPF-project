@@ -20,9 +20,9 @@ namespace StockPriceWinodw.ViewModel
         {
             //taking the coins from the model list
             Coins = new List<CoinModel>();
-            Coins.Add(new CoinModel("a", DateTime.Now, 2));
-            Coins.Add(new CoinModel("b", DateTime.Now, 1));
-            Coins.Add(new CoinModel("c", DateTime.Now, 6));
+            Coins.Add(new CoinModel("a", DateTime.Now, 2,2));
+            Coins.Add(new CoinModel("b", DateTime.Now, 1,1));
+            Coins.Add(new CoinModel("c", DateTime.Now, 6,0.5));
         }
     }
 }
