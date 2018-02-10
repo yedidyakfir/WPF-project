@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StockPriceWinodw"
         xmlns:View="clr-namespace:StockPriceWinodw.View"
+        ResizeMode="CanResizeWithGrip"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1000">
+        Title="MainWindow" Height="700" Width="1000" Icon="/doc.png">
     <Grid>
-        <View:MainViewUC></View:MainViewUC>
+        <View:MainViewUC x:Name="mainView"></View:MainViewUC>
     </Grid>
 </Window>

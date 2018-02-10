@@ -170,7 +170,7 @@
             </charts:SfChart.Behaviors>
 
             <charts:SfChart.PrimaryAxis>
-                <charts:DateTimeAxis PlotOffset="10" IntervalType="Days" Interval="1" BorderBrush="White" Foreground="White" ShowTrackBallInfo="True"
+                <charts:DateTimeAxis x:Name="YAxis" PlotOffset="10" IntervalType="Days" Interval="1" BorderBrush="White" Foreground="White" ShowTrackBallInfo="True"
                                      AxisLineStyle="{StaticResource axisLineStyle}" TrackBallLabelTemplate="{StaticResource xLabel}"
                                      ShowGridLines="False" TickLineSize="0" LabelTemplate="{StaticResource labelTemplate}"
                                      Background="{StaticResource XAxisLabelBackground}"></charts:DateTimeAxis>
@@ -178,7 +178,7 @@
             </charts:SfChart.PrimaryAxis>
 
             <charts:SfChart.SecondaryAxis>
-                <charts:NumericalAxis ShowTrackBallInfo="True" LabelFormat="#" Foreground="White"
+                <charts:NumericalAxis ShowTrackBallInfo="True" Foreground="White" LabelFormat="C0"
                                      LabelTemplate="{StaticResource yAxisTemplate}"
                                      TrackBallLabelTemplate="{StaticResource yLabel}" charts:SfChart.Row="3" AxisLineStyle="{StaticResource lineStyle2}"
                                      PlotOffset="10" Interval="1" ShowGridLines="False" LabelExtent="30" Background="{StaticResource YAxisLabelBackground}" 

@@ -16,14 +16,14 @@
     <Grid Margin="15" syncfusion:SkinStorage.VisualStyle="Metro">
         <Grid.RowDefinitions>
             <RowDefinition Height="4*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="3*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <Views:CurrencyValueUC x:Name="CurrencyList" Grid.Row="0" Margin="0,0,0,0" VerticalAlignment="Top" Height="335"/>
+        <Views:CurrencyValueUC x:Name="CurrencyList" Grid.Row="0" Margin="0" Height="Auto" Width="Auto"/>
 
         <Grid Grid.Row="1"
               Margin="5,3,5,3">
@@ -246,6 +246,6 @@
 
         </Grid>
 
-        <Views:CurrencyHistoryUC x:Name="History" Grid.Row="2" Margin="-30,-10,-10,-25" VerticalAlignment="Bottom"/>
+        <Views:CurrencyHistoryUC x:Name="History" Grid.Row="2" Margin="-30,-10,-10,-25" VerticalAlignment="Bottom" Width="Auto"/>
     </Grid>
 </UserControl>

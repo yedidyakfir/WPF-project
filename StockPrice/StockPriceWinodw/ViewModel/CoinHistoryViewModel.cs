@@ -11,7 +11,7 @@ namespace StockPriceWinodw.ViewModel
     internal class CoinHistoryViewModel
     {
         public List<CoinModel> history { get; private set; }
-        
+
         public CoinHistoryViewModel()
         {
             history = new List<CoinModel>();
