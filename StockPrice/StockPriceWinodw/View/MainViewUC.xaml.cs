@@ -27,6 +27,8 @@ namespace StockPriceWinodw.View
         {
             InitializeComponent();
             CurrencyList.PropertyChanged += ChangeCurrency;
+            originCoin.DataContext = new CoinsViewModel();
+            destinationCoin.DataContext = originCoin.DataContext;
         }
 
         internal void ChangeCurrency(object coinObj, PropertyChangedEventArgs arg)
