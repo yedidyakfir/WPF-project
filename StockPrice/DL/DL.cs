@@ -31,6 +31,7 @@ namespace DL
                     l.Add(new CoinValue(value, DateTime.Now));
                 }
                 catch (Exception) { }
+                Save();
                 return new CoinValue(value, DateTime.Now);
             }
             catch (Exception)//incase there's a problam with the internet
@@ -82,12 +83,14 @@ namespace DL
             }
         }
         public void addCurrentCoinValue(CurrentCoinValue c)
-        { CurrentCoins.Add(c); }
+        { CurrentCoins.Add(c); Save(); }
         public List<CurrentCoinValue> getCurrentCoins()
         { return CurrentCoins; }
         public void AddCoin(Coin c)
         {
             DB.Add(c);
+            CurrentCoins.Add(new CurrentCoinValue(c.name, getCoinValue(c.name).value, DateTime.Now));
+            Save();
         }
         public void Save()
         {

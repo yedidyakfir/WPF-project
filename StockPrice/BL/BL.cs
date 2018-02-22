@@ -88,7 +88,8 @@ namespace BL
                 throw new Exception("There is no internet and the coin wasn't saved in the database");
             }*/
         }
-
+        // by year 
+        // by derivative
         public List<CurrentCoinValue> getCoinsValue()
         {
             /*CoinValue g = getCoinValue("EUR");
@@ -133,7 +134,36 @@ namespace BL
             return Dal.getCurrentCoins();
         }
         public void addCurrentCoinValue(CurrentCoinValue c)
-        { Dal.addCurrentCoinValue(c); }
+        {
+            foreach (var item in Dal.getCurrentCoins())
+            {
+                if (item.name == c.name)
+                    throw new Exception("Coin already in DataBase");
+            }
+            Dal.addCurrentCoinValue(c);
+        }
+
+
+        /* the fomula that we used to calculate the slope:
+         Slope(now) = 0.5*((currentValue - closestPreviousValue)/(currentValueDate - closestPreviousValueDate)  +
+            0.5*Slope(now - 1)
+
+        Slope(now - 1) - the slope that would have been given if the lastest date(current) had not been in the calculation.
+        this is a recursive algorithm that takes the whole history into consideration.
+        */
+        public double GetSlope(string coin)
+        {
+            return getSlope(coin,new List<CoinValue>(Dal.getCoinHistory(coin)));
+        }
+        private double getSlope(string coin, List<CoinValue> history)
+        {
+            if (history.Count <= 1)
+                return 0;
+            CoinValue Current = history.Last();
+            history.Remove(history.Last());
+            CoinValue Previous = history.Last();
+            return 0.5 * ((Current.value - Previous.value) / (Current.date - Previous.date).TotalDays) + 0.5 * getSlope(coin, history);
+        }
     }
 }
 /*string request = String.Format("http://www.xe.com/ucc/convert.cgi?Amount={0}&From={1}&To={2}", value, inputCurrency, outputCurrency);

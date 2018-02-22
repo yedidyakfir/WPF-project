@@ -12,7 +12,7 @@ namespace BL
         static void Main(string[] args)
         {
             IBL gogo = new BL();
-            gogo.getCoinsValue();
+            Console.WriteLine("The slope of Israel new Shekel is - {0}", gogo.GetSlope("ILS"));
             Console.ReadKey();
         }
     }
