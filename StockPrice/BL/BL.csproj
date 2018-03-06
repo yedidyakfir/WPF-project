@@ -32,7 +32,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="SQL.LocalDB.Test, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQL.LocalDB.Test.1.1.3\lib\net40\SQL.LocalDB.Test.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,11 +54,21 @@
   <ItemGroup>
     <Compile Include="BL.cs" />
     <Compile Include="IBL.cs" />
+    <Compile Include="Migrations\201803052106128_AddUrl.cs" />
+    <Compile Include="Migrations\201803052106128_AddUrl.Designer.cs">
+      <DependentUpon>201803052106128_AddUrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803052111534_AddUrl1.cs" />
+    <Compile Include="Migrations\201803052111534_AddUrl1.Designer.cs">
+      <DependentUpon>201803052111534_AddUrl1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">
@@ -59,6 +79,14 @@
       <Project>{a2ad9e56-3ad0-4e74-b18c-09c3fe073831}</Project>
       <Name>DL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201803052106128_AddUrl.resx">
+      <DependentUpon>201803052106128_AddUrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803052111534_AddUrl1.resx">
+      <DependentUpon>201803052111534_AddUrl1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

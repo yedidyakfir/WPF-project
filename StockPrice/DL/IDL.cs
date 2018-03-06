@@ -11,7 +11,6 @@ namespace DL
     {
         List<CoinValue> getCoinHistory(string coin);
         void AddCoin(Coin c);
-        void Save();
         void Load();
         void addCurrentCoinValue(CurrentCoinValue c);
         CoinValue getCoinValue(string coin);

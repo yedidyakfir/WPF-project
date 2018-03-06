@@ -9,10 +9,10 @@ using DL;
 
 namespace BL
 {
-    class BL:IBL
+    class Bl:IBL
     {
         private IDL Dal = new DAL();
-        public BL()
+        public Bl()
         {
                 Dal.Load();
         }
@@ -46,7 +46,7 @@ namespace BL
         }
         public double Relation(string coin1, string coin2, double amount)
         {
-            return (getCoinValue(coin1).value / getCoinValue(coin2).value) * amount;
+            return (getCoinValue(coin1).CoinValueId / getCoinValue(coin2).CoinValueId) * amount;
         }
         public List<CoinValue> getCoinHistory(string coin)
         {
@@ -125,9 +125,9 @@ namespace BL
             {
                 foreach (var coin in Dal.getCurrentCoins())
                 {
-                    c = getCoinValue(coin.name);
+                    c = getCoinValue(coin.CurrentCoinValueId);
                     coin.date = c.date;
-                    coin.value = c.value;
+                    coin.value = c.CoinValueId;
                 }
             }
             catch (Exception) { }//if there is no internet it will return the last version
@@ -137,7 +137,7 @@ namespace BL
         {
             foreach (var item in Dal.getCurrentCoins())
             {
-                if (item.name == c.name)
+                if (item.CurrentCoinValueId == c.CurrentCoinValueId)
                     throw new Exception("Coin already in DataBase");
             }
             Dal.addCurrentCoinValue(c);
@@ -162,7 +162,7 @@ namespace BL
             CoinValue Current = history.Last();
             history.Remove(history.Last());
             CoinValue Previous = history.Last();
-            return 0.5 * ((Current.value - Previous.value) / (Current.date - Previous.date).TotalDays) + 0.5 * getSlope(coin, history);
+            return 0.5 * ((Current.CoinValueId - Previous.CoinValueId) / (Current.date - Previous.date).TotalDays) + 0.5 * getSlope(coin, history);
         }
     }
 }

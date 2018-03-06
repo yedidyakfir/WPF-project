@@ -8,24 +8,40 @@ namespace BE
 {
     public class CoinValue
     {
-        public double value;
-        public DateTime date;
+        public double CoinValueId { get; set; }
+        public DateTime date { get; set; }
         public CoinValue(double v, DateTime d)
         {
-            value = v;
+            CoinValueId = v;
             date = d;
         }
         public CoinValue() { }
     }
-    public class CurrentCoinValue : CoinValue
+    public class CurrentCoinValue
     {
-        public string name;
+        public double value { get; set; }
+        public DateTime date { get; set; }
+        public string CurrentCoinValueId { get; set; }
         public CurrentCoinValue(string n, double v, DateTime d)
         {
-            name = n;
+            CurrentCoinValueId = n;
             value = v;
             date = d;
         }
         public CurrentCoinValue() { }
     }
+    public class CoinValueForDB
+    {
+        public double CoinValueForDBId { get; set; }
+        public DateTime date { get; set; }
+        public string name { get; set; }
+        public CoinValueForDB(string n, double v, DateTime d)
+        {
+            name = n;
+            CoinValueForDBId = v;
+            date = d;
+        }
+        public CoinValueForDB() { }
+    }
+
 }
