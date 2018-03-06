@@ -129,9 +129,9 @@ namespace DL
         {
             using (var db = new CoinContext())
             {
-                db.CoinValues.RemoveRange(db.CoinValues.Where(d => (d.name == "AUD") || (d.name == "CNY")));
-                db.CurrentCoins.RemoveRange(db.CurrentCoins.Where(d => (d.CurrentCoinValueId == "AUD") || (d.CurrentCoinValueId == "CNY")));
-                db.SaveChanges();
+                //db.CoinValues.RemoveRange(db.CoinValues.Where(d => (d.name == "AUD") || (d.name == "CNY")));
+                //db.CurrentCoins.RemoveRange(db.CurrentCoins.Where(d => (d.CurrentCoinValueId == "AUD") || (d.CurrentCoinValueId == "CNY")));
+                //db.SaveChanges();
                 //db.Dispose();
                 /*DAL dal = ReadFromXmlFile<DAL>("DataBase");
                 DB = dal.DB;
