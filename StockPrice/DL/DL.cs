@@ -133,7 +133,7 @@ namespace DL
                 //db.CurrentCoins.RemoveRange(db.CurrentCoins.Where(d => (d.CurrentCoinValueId == "AUD") || (d.CurrentCoinValueId == "CNY")));
                 //db.SaveChanges();
                 //db.Dispose();
-                /*DAL dal = ReadFromXmlFile<DAL>("DataBase");ff
+                /*DAL dal = ReadFromXmlFile<DAL>("DataBase");
                 DB = dal.DB;
                 CurrentCoins = dal.CurrentCoins;
                   foreach (var coin in dal.DB)
