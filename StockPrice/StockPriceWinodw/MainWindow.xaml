@@ -1,13 +1,14 @@
-﻿<Window
+﻿<Window x:Class="StockPriceWinodw.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StockPriceWinodw"
-        xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="StockPriceWinodw.MainWindow"
+        xmlns:View="clr-namespace:StockPriceWinodw.View"
+        ResizeMode="CanResizeWithGrip"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="700" Width="1000" Icon="/doc.png">
     <Grid>
-        <ContentControl Name="HistoryGraph" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Height="319" Width="517"/>
+        <View:MainViewUC x:Name="mainView"></View:MainViewUC>
     </Grid>
 </Window>

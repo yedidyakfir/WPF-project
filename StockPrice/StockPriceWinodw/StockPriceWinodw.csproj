@@ -40,6 +40,7 @@
     <Reference Include="Syncfusion.Olap.Base, Version=15.4460.0.17, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.OlapChart.WPF, Version=15.4460.0.17, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.OlapShared.WPF, Version=15.4460.0.17, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.RichTextBoxAdv.WPF, Version=15.4460.0.17, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.SfChart.WPF, Version=15.4460.0.17, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.SfDiagram.WPF, Version=15.4460.0.17, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.SfGrid.WPF, Version=15.4460.0.17, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
@@ -70,12 +71,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Behaviors\CustomTrackBallBehavior.cs" />
     <Compile Include="converter\TextConverter.cs" />
+    <Compile Include="converter\ToggleButtonConverter.cs" />
     <Compile Include="Model\CoinModel.cs" />
     <Compile Include="ViewModel\CoinHistoryViewModel.cs" />
     <Compile Include="ViewModel\CoinsViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="View\CurrencyValueUC.xaml.cs">
       <DependentUpon>CurrencyValueUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainViewUC.xaml.cs">
+      <DependentUpon>MainViewUC.xaml</DependentUpon>
     </Compile>
     <Page Include="View\CurrencyHistoryUC.xaml">
       <SubType>Designer</SubType>
@@ -97,6 +104,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\CurrencyValueUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainViewUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -127,11 +138,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="doc.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">
       <Project>{17ef272c-525a-4593-9ef4-cc9844529611}</Project>
       <Name>BE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{b35cc29b-8c55-4f01-85d9-508f651ff671}</Project>
+      <Name>BL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

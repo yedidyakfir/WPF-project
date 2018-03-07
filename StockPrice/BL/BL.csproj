@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL.cs" />
+    <Compile Include="FactoryBL.cs" />
     <Compile Include="IBL.cs" />
     <Compile Include="Migrations\201803052106128_AddUrl.cs" />
     <Compile Include="Migrations\201803052106128_AddUrl.Designer.cs">

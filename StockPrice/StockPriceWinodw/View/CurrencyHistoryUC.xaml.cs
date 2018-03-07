@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using StockPriceWinodw.ViewModel;
 
-namespace StockPriceWinodw
+namespace StockPriceWinodw.View
 {
     /// <summary>
     /// Interaction logic for CurrencyHistoryUC.xaml
@@ -25,6 +25,7 @@ namespace StockPriceWinodw
         {
             InitializeComponent();
             LineGraph.DataContext = new CoinHistoryViewModel();
+            //YAxisName.Text = LineGraph.DataContext.ToString();
         }
     }
 }

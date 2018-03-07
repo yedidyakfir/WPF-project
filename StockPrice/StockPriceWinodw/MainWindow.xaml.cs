@@ -24,7 +24,6 @@ namespace StockPriceWinodw
         public MainWindow()
         {
             InitializeComponent();
-            HistoryGraph.Content = new CurrencyHistoryUC();
         }
     }
 }
