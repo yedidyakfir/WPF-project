@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BE;
+using BL;
 using StockPriceWinodw.Model;
 
 namespace StockPriceWinodw.ViewModel
@@ -18,10 +19,15 @@ namespace StockPriceWinodw.ViewModel
 
         public CoinsViewModel()
         {
+            // transform this list to coinModel list
+            List<CurrentCoinValue> c = FactoryBL.get().getCoinsValue();
+            //////////////////////////////////////////
+
             //taking the coins from the model list
-            Coins = new List<CoinModel>();
-            Coins.Add(new CoinModel("a", DateTime.Now, 2,2));
-            Coins.Add(new CoinModel("b", DateTime.Now, 1,1));
+            Coins =
+                new List<CoinModel>();
+            Coins.Add(new CoinModel("USD", DateTime.Now, 2,2));
+            Coins.Add(new CoinModel("ILS", DateTime.Now, 1,1));
             Coins.Add(new CoinModel("c", DateTime.Now, 6,0.5));
         }
     }

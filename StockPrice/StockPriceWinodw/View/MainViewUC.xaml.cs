@@ -37,7 +37,7 @@ namespace StockPriceWinodw.View
                 return;
             CoinModel coin = (CoinModel)coinObj;
 
-            History.LineGraph.DataContext = new CoinHistoryViewModel(coin.ToString(),"Day");
+            History.ChangeCoin(coin.ToString());
         }
 
         private void Year_Click(object sender, RoutedEventArgs e)
