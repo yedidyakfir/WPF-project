@@ -27,5 +27,17 @@ namespace StockPriceWinodw.View
             LineGraph.DataContext = new CoinHistoryViewModel();
             //YAxisName.Text = LineGraph.DataContext.ToString();
         }
+
+        public CurrencyHistoryUC(string coin)
+        {
+            InitializeComponent();
+            LineGraph.DataContext = new CoinHistoryViewModel(coin,"day");
+            //YAxisName.Text = LineGraph.DataContext.ToString();
+        }
+
+        public void ChangeCoin(string coin,string format = "day")
+        {
+            LineGraph.DataContext = new CoinHistoryViewModel(coin, format);
+        }
     }
 }

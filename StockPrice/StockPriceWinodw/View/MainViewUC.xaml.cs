@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using StockPriceWinodw.Model;
 using StockPriceWinodw.ViewModel;
+using BL;
 
 namespace StockPriceWinodw.View
 {
@@ -33,11 +34,11 @@ namespace StockPriceWinodw.View
 
         internal void ChangeCurrency(object coinObj, PropertyChangedEventArgs arg)
         {
-            if ((coinObj is CoinModel))
+            if (!(coinObj is CoinModel))
                 return;
             CoinModel coin = (CoinModel)coinObj;
 
-            History.LineGraph.DataContext = new CoinHistoryViewModel(coin.ToString(),"Day");
+            History.ChangeCoin(coin.ToString());
         }
 
         private void Year_Click(object sender, RoutedEventArgs e)
@@ -59,6 +60,14 @@ namespace StockPriceWinodw.View
             Year.IsChecked = false;
             Day.IsChecked = true;
             Month.IsChecked = false;
+        }
+
+        private void IntegerTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!(originCoin is CoinModel && destinationCoin is CoinModel))
+                return;
+
+            destinationValue.Text = FactoryBL.get().Relation(((CoinModel)originCoin.SelectedItem).coin, ((CoinModel)destinationCoin.SelectedItem).coin, (double)originValue.Value).ToString();
         }
     }
 }

@@ -14,8 +14,17 @@ namespace BL
         static void Main(string[] args)
         { 
             IBL gogo = new Bl();
+            gogo.getCoinHistory("CAD");
+            gogo.getCoinHistory("EUR");
+            gogo.getCoinHistory("CHF");
+            gogo.getCoinHistory("GBP");
+            gogo.getCoinHistory("ILS");
+            gogo.getCoinHistory("JPY");
+            gogo.getCoinHistory("SGD");
+            gogo.getCoinHistory("ZAR");
+
             //Console.WriteLine("The slope of Israel new Shekel is - {0}", gogo.GetSlope("ILS"));
-           
+
             foreach (var item in gogo.getCoinsValue())
             {
                 Console.WriteLine(item.CurrentCoinValueId);
