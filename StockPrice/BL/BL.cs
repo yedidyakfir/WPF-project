@@ -120,17 +120,6 @@ namespace BL
             c = new CurrentCoinValue("EUR", g.value, g.date);
             Dal.addCurrentCoinValue(c);
             Dal.Save();*/
-            CoinValue c;
-            try
-            {
-                foreach (var coin in Dal.getCurrentCoins())
-                {
-                    c = getCoinValue(coin.CurrentCoinValueId);
-                    coin.date = c.date;
-                    coin.value = c.CoinValueId;
-                }
-            }
-            catch (Exception) { }//if there is no internet it will return the last version
             return Dal.getCurrentCoins();
         }
         public void addCurrentCoinValue(CurrentCoinValue c)

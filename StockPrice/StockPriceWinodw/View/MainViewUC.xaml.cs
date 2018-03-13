@@ -38,7 +38,7 @@ namespace StockPriceWinodw.View
                 return;
             CoinModel coin = (CoinModel)coinObj;
 
-            History.ChangeCoin(coin.ToString());
+            History.ChangeCoin(coin.coin);
         }
 
         private void Year_Click(object sender, RoutedEventArgs e)
@@ -64,7 +64,7 @@ namespace StockPriceWinodw.View
 
         private void IntegerTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!(originCoin is CoinModel && destinationCoin is CoinModel))
+            if (!(originCoin.SelectedItem is CoinModel && destinationCoin.SelectedItem is CoinModel))
                 return;
 
             destinationValue.Text = FactoryBL.get().Relation(((CoinModel)originCoin.SelectedItem).coin, ((CoinModel)destinationCoin.SelectedItem).coin, (double)originValue.Value).ToString();

@@ -24,7 +24,7 @@ namespace DL
                 return getCoinHistory(coin).Last();
             try
             {
-                string url = "http://apilayer.net/api/live?access_key=5347423bf5f1c8c68212d50cf953a7a0=" + coin + "&source=USD&format=1";
+                string url = "http://apilayer.net/api/live?access_key=c78f579241e3d125becfe7b35e2bbf61=" + coin + "&source=USD&format=1";
                 WebClient wc = new WebClient();
                 string apiResponse = wc.DownloadString(url);
                 int index = apiResponse.IndexOf("USD" + coin);
@@ -66,7 +66,7 @@ namespace DL
                 for (int i = 0; i < 36; i++)
                 {
                     url = "http://apilayer.net/api/historical?" +
-                        "access_key=5347423bf5f1c8c68212d50cf953a7a0" +
+                        "access_key=c78f579241e3d125becfe7b35e2bbf61" +
                         "&date=" + t.Year.ToString() + "-" + (t.Month < 10 ? ("0" + t.Month.ToString()) : t.Month.ToString()) + "-" + (t.Day < 10 ? ("0" + t.Day.ToString()) : t.Day.ToString()) +
                         "&source=USD" +
                         "&currencies=" + coin +
@@ -98,7 +98,20 @@ namespace DL
             }
         }
         public List<CurrentCoinValue> getCurrentCoins()
-        { return CurrentCoins; }
+        {
+            CoinValue c;
+            try
+            {
+                foreach (var coin in CurrentCoins)
+                {
+                    c = getCoinValue(coin.CurrentCoinValueId);
+                    coin.date = c.date;
+                    coin.value = c.CoinValueId;
+                }
+            }
+            catch (Exception) { }
+            return CurrentCoins;
+        }
         public void AddCoin(Coin c)
         {
             using (var db = new CoinContext())

@@ -18,6 +18,24 @@ namespace StockPriceWinodw.ViewModel
             history = new List<CoinModel>();
         }
 
+        public double MaxValue
+        {
+            get
+            {
+                return (from c in history
+                        select c.value).Max();
+            }
+        }
+
+        public double MinValue
+        {
+            get
+            {
+                return (from c in history
+                        select c.value).Min();
+            }
+        }
+
         public CoinHistoryViewModel(string coin,string format)
         {
             List<CoinValue> BeCoins = FactoryBL.get().getCoinHistory(coin);
