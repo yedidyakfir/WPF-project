@@ -110,7 +110,7 @@ namespace DL
                 }
             }
             catch (Exception) { }
-            return CurrentCoins;
+            return CurrentCoins;//
         }
         public void AddCoin(Coin c)
         {
