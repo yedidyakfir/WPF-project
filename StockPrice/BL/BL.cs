@@ -9,12 +9,12 @@ using DL;
 
 namespace BL
 {
-    class Bl:IBL
+    class Bl : IBL
     {
         private IDL Dal = new DAL();
         public Bl()
         {
-                Dal.Load();
+            Dal.Load();
         }
         public CoinValue getCoinValue(string coin)
         {
@@ -51,42 +51,42 @@ namespace BL
         public List<CoinValue> getCoinHistory(string coin)
         {
             return Dal.getCoinHistory(coin);
-         /*   try
-            {           
-                if (Dal.getCoinHistory(coin) != null)
-                    return Dal.getCoinHistory(coin);
+            /*   try
+               {           
+                   if (Dal.getCoinHistory(coin) != null)
+                       return Dal.getCoinHistory(coin);
 
-                DateTime t = DateTime.Now;
-                t = t.AddYears(-3);
-                string url;
-                WebClient wc;
-                List<CoinValue> l = new List<CoinValue>();
-                                
-                for (int i = 0; i < 36; i++)
-                {
-                    url = "http://apilayer.net/api/historical?" +
-                        "access_key=0c54679e2255988cd03b9ed59129983a" +
-                        "&date=" + t.Year.ToString() + "-" + (t.Month<10?("0"+t.Month.ToString()):t.Month.ToString()) + "-" + (t.Day < 10 ? ("0" + t.Day.ToString()) : t.Day.ToString()) +
-                        "&source=USD" +
-                        "&currencies=" + coin +
-                        "&format=1";
-                    wc = new WebClient();
-                    string apiResponse = wc.DownloadString(url);
-                    int index = apiResponse.IndexOf("USD" + coin);
-                    apiResponse = apiResponse.Substring(index + 8, 8);
-                    double value = Double.Parse(apiResponse);
-                    value = 1 / value;
-                    l.Add(new CoinValue(value, t));
-                    t = t.AddMonths(1);
-                }
-                Dal.AddCoin(new Coin(coin, l));
-                Dal.Save();
-                return l;
-            }
-            catch (Exception e)
-            {
-                throw new Exception("There is no internet and the coin wasn't saved in the database");
-            }*/
+                   DateTime t = DateTime.Now;
+                   t = t.AddYears(-3);
+                   string url;
+                   WebClient wc;
+                   List<CoinValue> l = new List<CoinValue>();
+
+                   for (int i = 0; i < 36; i++)
+                   {
+                       url = "http://apilayer.net/api/historical?" +
+                           "access_key=0c54679e2255988cd03b9ed59129983a" +
+                           "&date=" + t.Year.ToString() + "-" + (t.Month<10?("0"+t.Month.ToString()):t.Month.ToString()) + "-" + (t.Day < 10 ? ("0" + t.Day.ToString()) : t.Day.ToString()) +
+                           "&source=USD" +
+                           "&currencies=" + coin +
+                           "&format=1";
+                       wc = new WebClient();
+                       string apiResponse = wc.DownloadString(url);
+                       int index = apiResponse.IndexOf("USD" + coin);
+                       apiResponse = apiResponse.Substring(index + 8, 8);
+                       double value = Double.Parse(apiResponse);
+                       value = 1 / value;
+                       l.Add(new CoinValue(value, t));
+                       t = t.AddMonths(1);
+                   }
+                   Dal.AddCoin(new Coin(coin, l));
+                   Dal.Save();
+                   return l;
+               }
+               catch (Exception e)
+               {
+                   throw new Exception("There is no internet and the coin wasn't saved in the database");
+               }*/
         }
         // by year 
         // by derivative
@@ -153,7 +153,7 @@ namespace BL
         */
         public double GetSlope(string coin)
         {
-            return getSlope(coin,new List<CoinValue>(Dal.getCoinHistory(coin)));
+            return getSlope(coin, new List<CoinValue>(Dal.getCoinHistory(coin)));
         }
         private double getSlope(string coin, List<CoinValue> history)
         {

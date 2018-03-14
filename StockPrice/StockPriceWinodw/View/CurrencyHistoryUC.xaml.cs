@@ -35,6 +35,11 @@ namespace StockPriceWinodw.View
             //YAxisName.Text = LineGraph.DataContext.ToString();
         }
 
+        private void setData(string coin)
+        {
+
+        }
+
         public void ChangeCoin(string coin,string format = "day")
         {
             LineGraph.DataContext = new CoinHistoryViewModel(coin, format);

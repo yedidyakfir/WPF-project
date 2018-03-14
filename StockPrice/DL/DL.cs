@@ -24,7 +24,7 @@ namespace DL
                 return getCoinHistory(coin).Last();
             try
             {
-                string url = "http://apilayer.net/api/live?access_key=7017c5933ab8aaa1d0078693a5b1b8a9&currencies="+coin+ "&format=1";
+                string url = "http://apilayer.net/api/live?access_key=7017c5933ab8aaa1d0078693a5b1b8a9&currencies=" + coin + "&format=1";
                 WebClient wc = new WebClient();
                 string apiResponse = wc.DownloadString(url);
                 int index = apiResponse.IndexOf("USD" + coin);
@@ -108,7 +108,7 @@ namespace DL
                     CurrentCoins.Add(new CurrentCoinValue(c.CoinId, getCoinValue(c.CoinId).CoinValueId, DateTime.Now));
                     foreach (var item in c.History)
                     {
-                        db.CoinValues.Add(new CoinValueForDB(c.CoinId, item.CoinValueId, item.date));                       
+                        db.CoinValues.Add(new CoinValueForDB(c.CoinId, item.CoinValueId, item.date));
                     }
                     db.CurrentCoins.Add(new CurrentCoinValue(c.CoinId, getCoinValue(c.CoinId).CoinValueId, DateTime.Now));
                     Save(db);
@@ -122,7 +122,7 @@ namespace DL
         public void Save(CoinContext db)
         {
             db.SaveChanges();
-           // WriteToXmlFile<DAL>("DataBase", this);
+            // WriteToXmlFile<DAL>("DataBase", this);
         }
         public void Load()
         {

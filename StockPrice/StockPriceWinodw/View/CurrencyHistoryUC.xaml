@@ -182,7 +182,7 @@
                                      LabelTemplate="{StaticResource yAxisTemplate}"
                                      TrackBallLabelTemplate="{StaticResource yLabel}" charts:SfChart.Row="3" AxisLineStyle="{StaticResource lineStyle2}"
                                      PlotOffset="10" Interval="1" ShowGridLines="False" LabelExtent="30" Background="{StaticResource YAxisLabelBackground}" 
-                                     TickLineSize="0" SmallTickLineSize="0" Minimum="0" Maximum="10">
+                                     TickLineSize="0" SmallTickLineSize="0" Minimum="{Binding MinValue}" Maximum="{Binding MaxValue}">
                     <charts:NumericalAxis.Header>
                         <Grid RenderTransformOrigin="0.5,0.5" >
                             <Grid.RenderTransform>
