@@ -24,7 +24,7 @@ namespace DL
                 return getCoinHistory(coin).Last();
             try
             {
-                string url = "http://apilayer.net/api/live?access_key=5347423bf5f1c8c68212d50cf953a7a0=" + coin + "&source=USD&format=1";
+                string url = "http://apilayer.net/api/live?access_key=7017c5933ab8aaa1d0078693a5b1b8a9&currencies="+coin+ "&format=1";
                 WebClient wc = new WebClient();
                 string apiResponse = wc.DownloadString(url);
                 int index = apiResponse.IndexOf("USD" + coin);
@@ -66,9 +66,8 @@ namespace DL
                 for (int i = 0; i < 36; i++)
                 {
                     url = "http://apilayer.net/api/historical?" +
-                        "access_key=5347423bf5f1c8c68212d50cf953a7a0" +
+                        "access_key=7017c5933ab8aaa1d0078693a5b1b8a9" +
                         "&date=" + t.Year.ToString() + "-" + (t.Month < 10 ? ("0" + t.Month.ToString()) : t.Month.ToString()) + "-" + (t.Day < 10 ? ("0" + t.Day.ToString()) : t.Day.ToString()) +
-                        "&source=USD" +
                         "&currencies=" + coin +
                         "&format=1";
                     wc = new WebClient();
