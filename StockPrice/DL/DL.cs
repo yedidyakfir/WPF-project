@@ -24,7 +24,7 @@ namespace DL
                 return getCoinHistory(coin).Last();
             try
             {
-                string url = "http://apilayer.net/api/live?access_key=c78f579241e3d125becfe7b35e2bbf61=" + coin + "&source=USD&format=1";
+                string url = "http://apilayer.net/api/live?access_key=7017c5933ab8aaa1d0078693a5b1b8a9&currencies=" + coin + "&format=1";
                 WebClient wc = new WebClient();
                 string apiResponse = wc.DownloadString(url);
                 int index = apiResponse.IndexOf("USD" + coin);
@@ -66,9 +66,8 @@ namespace DL
                 for (int i = 0; i < 36; i++)
                 {
                     url = "http://apilayer.net/api/historical?" +
-                        "access_key=c78f579241e3d125becfe7b35e2bbf61" +
+                        "access_key=7017c5933ab8aaa1d0078693a5b1b8a9" +
                         "&date=" + t.Year.ToString() + "-" + (t.Month < 10 ? ("0" + t.Month.ToString()) : t.Month.ToString()) + "-" + (t.Day < 10 ? ("0" + t.Day.ToString()) : t.Day.ToString()) +
-                        "&source=USD" +
                         "&currencies=" + coin +
                         "&format=1";
                     wc = new WebClient();
@@ -98,20 +97,7 @@ namespace DL
             }
         }
         public List<CurrentCoinValue> getCurrentCoins()
-        {
-            CoinValue c;
-            try
-            {
-                foreach (var coin in CurrentCoins)
-                {
-                    c = getCoinValue(coin.CurrentCoinValueId);
-                    coin.date = c.date;
-                    coin.value = c.CoinValueId;
-                }
-            }
-            catch (Exception) { }
-            return CurrentCoins;//
-        }
+        { return CurrentCoins; }
         public void AddCoin(Coin c)
         {
             using (var db = new CoinContext())
@@ -122,7 +108,7 @@ namespace DL
                     CurrentCoins.Add(new CurrentCoinValue(c.CoinId, getCoinValue(c.CoinId).CoinValueId, DateTime.Now));
                     foreach (var item in c.History)
                     {
-                        db.CoinValues.Add(new CoinValueForDB(c.CoinId, item.CoinValueId, item.date));                       
+                        db.CoinValues.Add(new CoinValueForDB(c.CoinId, item.CoinValueId, item.date));
                     }
                     db.CurrentCoins.Add(new CurrentCoinValue(c.CoinId, getCoinValue(c.CoinId).CoinValueId, DateTime.Now));
                     Save(db);
@@ -136,7 +122,7 @@ namespace DL
         public void Save(CoinContext db)
         {
             db.SaveChanges();
-           // WriteToXmlFile<DAL>("DataBase", this);
+            // WriteToXmlFile<DAL>("DataBase", this);
         }
         public void Load()
         {
