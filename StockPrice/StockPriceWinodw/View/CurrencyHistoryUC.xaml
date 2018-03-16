@@ -71,7 +71,7 @@
 
                 <Border Background="#FFF4F4F5" Margin="0, 0,-1,0">
                     <StackPanel Orientation="Horizontal" Margin="10,5,10,5" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <TextBlock FontSize="12" FontFamily="Global User Interface" Foreground="#FF3A3A3A" Text="{Binding Value1}"/>
+                        <TextBlock FontSize="12" FontFamily="Global User Interface" Foreground="#FF3A3A3A" Text="{Binding ValueY}"/>
                         <!--<TextBlock FontSize="8" VerticalAlignment="Top" FontFamily="Global User Interface" Foreground="#FF3A3A3A" Text="o"/>
                         <TextBlock FontSize="12" FontFamily="Global User Interface" Foreground="#FF3A3A3A" Text="F / "/>
                         <TextBlock FontSize="12" FontFamily="Global User Interface" Foreground="#FF3A3A3A" Text="{Binding Value2}"/>
@@ -91,7 +91,7 @@
                 <Rectangle Width="4" Fill="{Binding Interior}" VerticalAlignment="Stretch"></Rectangle>
                 <Border Background="#FFF4F4F5" Margin="0, 0,-1,0">
                     <StackPanel Margin="10,5,10,5" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
-                        <TextBlock  FontSize="12" FontFamily="Global User Interface" Foreground="#FF3A3A3A" Text="{Binding ValueY}"/>
+                        <TextBlock  FontSize="12" FontFamily="Global User Interface" Foreground="#FF3A3A3A" Text="66"/>
                     </StackPanel>
                 </Border>
                 <Path Data="M19.5625,19.8125 L-0.124504,0.125496 L19.563,0.125496" Fill="#FFF4F4F5" Height="15" Stretch="Uniform" UseLayoutRounding="False" VerticalAlignment="Top" Width="15">
@@ -170,7 +170,7 @@
             </charts:SfChart.Behaviors>
 
             <charts:SfChart.PrimaryAxis>
-                <charts:DateTimeAxis x:Name="YAxis" PlotOffset="10" IntervalType="Days" Interval="1" BorderBrush="White" Foreground="White" ShowTrackBallInfo="True"
+                <charts:DateTimeAxis x:Name="YAxis" PlotOffset="10" IntervalType="Months" Interval="1" BorderBrush="White" Foreground="White" ShowTrackBallInfo="True"
                                      AxisLineStyle="{StaticResource axisLineStyle}" TrackBallLabelTemplate="{StaticResource xLabel}"
                                      ShowGridLines="False" TickLineSize="0" LabelTemplate="{StaticResource labelTemplate}"
                                      Background="{StaticResource XAxisLabelBackground}"></charts:DateTimeAxis>
