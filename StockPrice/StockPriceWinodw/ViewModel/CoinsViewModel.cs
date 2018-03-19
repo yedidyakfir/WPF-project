@@ -19,11 +19,19 @@ namespace StockPriceWinodw.ViewModel
 
         public CoinsViewModel()
         {
-            // transform this list to coinModel list
-            List<CurrentCoinValue> BeCoins = FactoryBL.get().getCoinsValue();
-            Coins = (from c in BeCoins
-                     select new CoinModel(c.CurrentCoinValueId, c.date, c.value, FactoryBL.get().GetSlope(c.CurrentCoinValueId))).ToList();
-            
+            try
+            {
+                // transform this list to coinModel list
+                List<CurrentCoinValue> BeCoins = FactoryBL.get().getCoinsValue();
+                Coins = (from c in BeCoins
+                         select new CoinModel(c.CurrentCoinValueId, c.date, c.value, FactoryBL.get().GetSlope(c.CurrentCoinValueId))).ToList();
+
+            }
+            catch(Exception ex)
+            {
+                Coins = new List<CoinModel>();
+            }
+
 
             //taking the coins from the model list
             //Coins =

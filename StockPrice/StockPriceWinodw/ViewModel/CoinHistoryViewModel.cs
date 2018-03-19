@@ -38,10 +38,18 @@ namespace StockPriceWinodw.ViewModel
 
         public CoinHistoryViewModel(string coin,string format)
         {
-            List<CoinValue> BeCoins = FactoryBL.get().getCoinHistory(coin);
+            try
+            {
+                List<CoinValue> BeCoins = FactoryBL.get().getCoinHistory(coin);
 
-            history = (from c in BeCoins
-                       select new CoinModel(coin, c.date, c.CoinValueId, 0)).ToList();
+                history = (from c in BeCoins
+                           select new CoinModel(coin, c.date, c.CoinValueId, 0)).ToList();
+
+            }
+            catch(Exception ex)
+            {
+                history = new List<CoinModel>();
+            }
         }
 
         public override string ToString()
