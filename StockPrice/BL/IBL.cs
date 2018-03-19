@@ -18,9 +18,6 @@ namespace BL
         //returns a list of CoinValue of the coin
         List<CoinValue> getCoinHistory(string coin);  
 
-        //Adding a kind of coin to the DataBase
-        void addCurrentCoinValue(CurrentCoinValue c);
-
         // Returns the slope of the coin - the value the coin goes up/down per day on average
         //(taking into account the history of the coin and not just the last two dates on record)
         double GetSlope(string coin);

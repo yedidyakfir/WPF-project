@@ -133,15 +133,7 @@ namespace BL
             catch (Exception) { }//if there is no internet it will return the last version
             return Dal.getCurrentCoins();
         }
-        public void addCurrentCoinValue(CurrentCoinValue c)
-        {
-            foreach (var item in Dal.getCurrentCoins())
-            {
-                if (item.CurrentCoinValueId == c.CurrentCoinValueId)
-                    throw new Exception("Coin already in DataBase");
-            }
-            Dal.addCurrentCoinValue(c);
-        }
+        
 
 
         /* the fomula that we used to calculate the slope:

@@ -33,12 +33,14 @@ namespace BE
     public class CoinValueForDB
     {
         public double CoinValueForDBId { get; set; }
+        public double value { get; set; }
         public DateTime date { get; set; }
         public string name { get; set; }
-        public CoinValueForDB(string n, double v, DateTime d)
+        public CoinValueForDB(string n,double id, double v, DateTime d)
         {
             name = n;
-            CoinValueForDBId = v;
+            CoinValueForDBId = id;
+            value = v;
             date = d;
         }
         public CoinValueForDB() { }
