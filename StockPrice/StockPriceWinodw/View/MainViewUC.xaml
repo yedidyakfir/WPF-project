@@ -248,6 +248,7 @@
 
         </Grid>
 
-        <Views:CurrencyHistoryUC x:Name="History" Grid.Row="2" Margin="-30,-10,-10,-25" VerticalAlignment="Bottom" Width="Auto"/>
+        <Views:CoinHistoryUC x:Name="History" Grid.Row="2" Margin="0" Width="Auto"/>
+        <!--<Views:CurrencyHistoryUC x:Name="History" Grid.Row="2" Margin="-30,-10,-10,-25" VerticalAlignment="Bottom" Width="Auto"/>-->
     </Grid>
 </UserControl>
