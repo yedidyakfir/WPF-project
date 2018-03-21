@@ -7,7 +7,7 @@
         xmlns:View="clr-namespace:StockPriceWinodw.View"
         ResizeMode="CanResizeWithGrip"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1000" Icon="/doc.png">
+        Title="MainWindow" Height="750" Width="1000" Icon="/doc.png">
     <Grid>
         <View:MainViewUC x:Name="mainView"></View:MainViewUC>
     </Grid>

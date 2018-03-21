@@ -49,10 +49,17 @@ namespace StockPriceWinodw.ViewModel
         {
             try
             {
-                List<CoinValue> BeCoins = FactoryBL.get().getCoinHistory(coin);
+                List<CoinValue> BeCoins = FactoryBL.get().getCoinHistory(coin,format);
 
                 history = (from c in BeCoins
                            select new CoinModel(coin, c.date, c.CoinValueId, 0)).ToList();
+
+                if(history.Count == 1)
+                {
+                    CoinModel tempC = history.First();
+                    history.Add(new CoinModel(tempC.coin, tempC.lastUpdate - TimeSpan.FromDays(1), tempC.value + 0.0000001));
+                    history.Add(new CoinModel(tempC.coin, tempC.lastUpdate - TimeSpan.FromDays(2), tempC.value));
+                }
 
             }
             catch (Exception ex)

@@ -22,9 +22,7 @@ namespace StockPriceWinodw.ViewModel
             try
             {
                 // transform this list to coinModel list
-                List<CurrentCoinValue> BeCoins = FactoryBL.get().getCoinsValue();
-                Coins = (from c in BeCoins
-                         select new CoinModel(c.CurrentCoinValueId, c.date, c.value, FactoryBL.get().GetSlope(c.CurrentCoinValueId))).ToList();
+                setCoins();
 
             }
             catch(Exception ex)
@@ -39,6 +37,13 @@ namespace StockPriceWinodw.ViewModel
             //Coins.Add(new CoinModel("USD", DateTime.Now, 2,2));
             //Coins.Add(new CoinModel("ILS", DateTime.Now, 1,1));
             //Coins.Add(new CoinModel("c", DateTime.Now, 6,0.5));
+        }
+
+        private async void setCoins()
+        {
+            List<CurrentCoinValue> BeCoins = FactoryBL.get().getCoinsValue();
+            Coins = (from c in BeCoins
+                     select new CoinModel(c.CurrentCoinValueId, c.date, c.value, FactoryBL.get().GetSlope(c.CurrentCoinValueId))).ToList();
         }
     }
 }

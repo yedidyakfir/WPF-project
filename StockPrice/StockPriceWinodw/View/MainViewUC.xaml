@@ -9,7 +9,7 @@
              xmlns:Views="clr-namespace:StockPriceWinodw.View"
              mc:Ignorable="d" 
              xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
-             d:DesignHeight="700" d:DesignWidth="1000" Background="#FFF9F9F9">
+             d:DesignHeight="750" d:DesignWidth="1000" Background="#FFF9F9F9">
     <UserControl.Resources>
         <Converter:ToggleButtonConverter x:Key="toggleConv"/>
     </UserControl.Resources>

@@ -43,15 +43,25 @@ namespace StockPriceWinodw.View
 
         private void changeView()
         {
-            DataContext = new CoinHistoryViewModel(coin, format);
+            if (coin == "")
+                DataContext = new CoinHistoryViewModel();
+            else
+               DataContext = new CoinHistoryViewModel(coin, format);
         }
 
-        public void ChangeCoin(string c, string f = "day")
+        public async void ChangeCoin(string c, string f = "day")
         {
             coin = c;
             format = f;
-            Thread getHistoryThread = new Thread(changeView);
-            getHistoryThread.Start();
+            changeView();
+            //Thread getHistoryThread = new Thread(changeView);
+            //getHistoryThread.Start();
+        }
+
+        public async void ChangeFormat(string f)
+        {
+            format = f;
+            changeView();
         }
 
         private void UpdateOnclick(object sender, RoutedEventArgs e)

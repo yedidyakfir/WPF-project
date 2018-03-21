@@ -46,6 +46,7 @@ namespace StockPriceWinodw.View
             Year.IsChecked = true;
             Day.IsChecked = false;
             Month.IsChecked = false;
+            History.ChangeFormat("year");
         }
 
         private void Month_Click(object sender, RoutedEventArgs e)
@@ -53,6 +54,7 @@ namespace StockPriceWinodw.View
             Year.IsChecked = false;
             Day.IsChecked = false;
             Month.IsChecked = true;
+            History.ChangeFormat("month");
         }
 
         private void Day_Click(object sender, RoutedEventArgs e)
@@ -60,6 +62,7 @@ namespace StockPriceWinodw.View
             Year.IsChecked = false;
             Day.IsChecked = true;
             Month.IsChecked = false;
+            History.ChangeFormat("day");
         }
 
         private void IntegerTextBox_TextChanged(object sender, TextChangedEventArgs e)
