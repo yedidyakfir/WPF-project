@@ -48,9 +48,21 @@ namespace BL
         {
             return (getCoinValue(coin1).CoinValueId / getCoinValue(coin2).CoinValueId) * amount;
         }
-        public List<CoinValue> getCoinHistory(string coin)
+        public List<CoinValue> getCoinHistory(string coin,string format = "day")
         {
-            return Dal.getCoinHistory(coin);
+            List<CoinValue> l = new List<CoinValue>();
+            List<CoinValue> temp = Dal.getCoinHistory(coin).OrderBy(d => d.date).ToList();
+            if (format == "day")
+                return temp;
+            else if(format == "month")
+                for (int i = 0; i < Dal.getCoinHistory(coin).Count; i = i+30)
+                    l.Add(temp.ToArray()[i]);
+            else
+                for (int i = 0; i < Dal.getCoinHistory(coin).Count; i = i + 365)
+                    l.Add(temp.ToArray()[i]);
+            return l;
+                
+
             /*   try
                {           
                    if (Dal.getCoinHistory(coin) != null)
@@ -120,17 +132,6 @@ namespace BL
             c = new CurrentCoinValue("EUR", g.value, g.date);
             Dal.addCurrentCoinValue(c);
             Dal.Save();*/
-            CoinValue c;
-            try
-            {
-                foreach (var coin in Dal.getCurrentCoins())
-                {
-                    c = getCoinValue(coin.CurrentCoinValueId);
-                    coin.date = c.date;
-                    coin.value = c.CoinValueId;
-                }
-            }
-            catch (Exception) { }//if there is no internet it will return the last version
             return Dal.getCurrentCoins();
         }
         
@@ -154,7 +155,7 @@ namespace BL
             CoinValue Current = history.Last();
             history.Remove(history.Last());
             CoinValue Previous = history.Last();
-            return 0.5 * ((Current.CoinValueId - Previous.CoinValueId) / (Current.date - Previous.date).TotalDays) + 0.5 * getSlope(coin, history);
+            return 0.1 * ((Current.CoinValueId - Previous.CoinValueId) / (Current.date - Previous.date).TotalDays) + 0.9 * getSlope(coin, history);
         }
     }
 }

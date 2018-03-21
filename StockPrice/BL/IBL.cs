@@ -16,7 +16,7 @@ namespace BL
         List<CurrentCoinValue> getCoinsValue();
 
         //returns a list of CoinValue of the coin
-        List<CoinValue> getCoinHistory(string coin);  
+        List<CoinValue> getCoinHistory(string coin,string format = "day");  
 
         // Returns the slope of the coin - the value the coin goes up/down per day on average
         //(taking into account the history of the coin and not just the last two dates on record)
