@@ -58,7 +58,7 @@ namespace BL
                 for (int i = 0; i < Dal.getCoinHistory(coin).Count; i = i+30)
                     l.Add(temp.ToArray()[i]);
             else
-                for (int i = 0; i < Dal.getCoinHistory(coin).Count; i = i + 365)
+                for (int i = 0; i < Dal.getCoinHistory(coin).Count; i = i + 182)//every half a year
                     l.Add(temp.ToArray()[i]);
             return l;
                 
