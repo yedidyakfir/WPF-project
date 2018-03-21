@@ -35,7 +35,7 @@
                 </lvc:LineSeries>
             </lvc:CartesianChart.Series>
             <lvc:CartesianChart.AxisX>
-                <lvc:Axis Labels="{Binding XValues}" IsEnabled="True" ShowLabels="True"/>
+                <lvc:Axis Labels="{Binding XValues}" Foreground="Blue" FontSize="14" IsEnabled="True" ShowLabels="True"/>
             </lvc:CartesianChart.AxisX>
             <lvc:CartesianChart.AxisY>
                 <lvc:Axis Foreground="White" FontSize="14" LabelFormatter="{Binding YFormatter}">
@@ -46,14 +46,14 @@
             </lvc:CartesianChart.AxisY>
         </lvc:CartesianChart>
 
-        <Expander Grid.Column="1" IsExpanded="True" FlowDirection="RightToLeft" HorizontalAlignment="Right" Height="290" Grid.RowSpan="2" VerticalAlignment="Top" Width="87">
+        <Expander Grid.Column="1" IsExpanded="True" FlowDirection="RightToLeft" HorizontalAlignment="Right" Height="290" Grid.RowSpan="2" VerticalAlignment="Top" Width="127">
             <StackPanel x:Name="HistoryData" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Background="#4CFFFFFF" Height="270" VerticalAlignment="Top" Margin="0,0,-91,0">
                 <TextBlock Foreground="White" FontSize="16" HorizontalAlignment="Center" Margin="0,20,0,0">Maximum Value</TextBlock>
-                <TextBlock Foreground="White" FontSize="30" HorizontalAlignment="Center" Text="{Binding MaxValue,StringFormat={}{0:C}}"></TextBlock>
+                <TextBlock Foreground="White" FontSize="30" HorizontalAlignment="Center" Text="{Binding MaxValue,StringFormat={}{0:E}}"></TextBlock>
                 <TextBlock Foreground="White" FontSize="16" HorizontalAlignment="Center" Margin="0,20,0,0">Min Value</TextBlock>
-                <TextBlock Foreground="White" FontSize="30" HorizontalAlignment="Center" Text="{Binding MinValue,StringFormat={}{0:C}}"></TextBlock>
+                <TextBlock Foreground="White" FontSize="30" HorizontalAlignment="Center" Text="{Binding MinValue,StringFormat={}{0:E}}"></TextBlock>
                 <TextBlock Foreground="White" FontSize="16" HorizontalAlignment="Center" Margin="0,20,0,0">Average</TextBlock>
-                <TextBlock Foreground="White" FontSize="30" HorizontalAlignment="Center" Text="{Binding AverageValue,StringFormat={}{0:C}}"></TextBlock>
+                <TextBlock Foreground="White" FontSize="30" HorizontalAlignment="Center" Text="{Binding AverageValue,StringFormat={}{0:E}}"></TextBlock>
             </StackPanel>
         </Expander>
         <!--btn for refresh zoom?<Button Grid.Column="1" Grid.Row="1" Width="40" Height="40" VerticalAlignment="Top" Panel.ZIndex="1"

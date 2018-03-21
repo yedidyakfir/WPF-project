@@ -42,7 +42,15 @@ namespace StockPriceWinodw.ViewModel
             history.Add(new CoinModel("Demo", DateTime.Now - TimeSpan.FromDays(1), 3));
             history.Add(new CoinModel("Demo", DateTime.Now - TimeSpan.FromDays(2), 2));
 
-            YFormatter = value => value.ToString("C");
+            YFormatter = valueTostring;// value => value.ToString("C");
+        }
+
+        private string valueTostring(double val)
+        {
+            if (val < 0.01)
+                return val.ToString("E");
+            else
+                return val.ToString("C");
         }
 
         public CoinHistoryViewModel(string coin, string format)
@@ -54,7 +62,7 @@ namespace StockPriceWinodw.ViewModel
                 history = (from c in BeCoins
                            select new CoinModel(coin, c.date, c.CoinValueId, 0)).ToList();
 
-                if(history.Count == 1)
+                if(history.Count == 1) //precaution for break mode 
                 {
                     CoinModel tempC = history.First();
                     history.Add(new CoinModel(tempC.coin, tempC.lastUpdate - TimeSpan.FromDays(1), tempC.value + 0.0000001));
@@ -68,7 +76,7 @@ namespace StockPriceWinodw.ViewModel
                 history.Add(new CoinModel("NOT FOUND", DateTime.Now, 1));
             }
 
-            YFormatter = value => value.ToString("C");
+            YFormatter = valueTostring;
         }
 
         public string Coin
