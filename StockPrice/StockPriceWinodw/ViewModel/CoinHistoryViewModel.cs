@@ -69,6 +69,12 @@ namespace StockPriceWinodw.ViewModel
                     history.Add(new CoinModel(tempC.coin, tempC.lastUpdate - TimeSpan.FromDays(2), tempC.value));
                 }
 
+                if(FactoryBL.get().GetSlope(coin) == 0)
+                {
+                    CoinModel tempC = history.First();
+                    history.Remove(tempC);
+                    history.Add(new CoinModel(tempC.coin, tempC.lastUpdate - TimeSpan.FromDays(1), tempC.value + 0.0000001));
+                }
             }
             catch (Exception ex)
             {
