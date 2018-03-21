@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,22 +24,34 @@ namespace StockPriceWinodw.View
     /// </summary>
     public partial class CoinHistoryUC : UserControl
     {
+        private string coin = "";
+        private string format = "";
         public CoinHistoryUC()
         {
             InitializeComponent();
             DataContext = new CoinHistoryViewModel();
         }
 
-        public CoinHistoryUC(string coin)
+        public CoinHistoryUC(string c)
         {
             InitializeComponent();
-            DataContext = new CoinHistoryViewModel(coin, "day");
+            ChangeCoin(c, "day");
+            
+            //DataContext = new CoinHistoryViewModel(coin, "day");
             //YAxisName.Text = LineGraph.DataContext.ToString();
         }
 
-        public void ChangeCoin(string coin, string format = "day")
+        private void changeView()
         {
             DataContext = new CoinHistoryViewModel(coin, format);
+        }
+
+        public void ChangeCoin(string c, string f = "day")
+        {
+            coin = c;
+            format = f;
+            Thread getHistoryThread = new Thread(changeView);
+            getHistoryThread.Start();
         }
 
         private void UpdateOnclick(object sender, RoutedEventArgs e)

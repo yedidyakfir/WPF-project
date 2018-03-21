@@ -1,5 +1,6 @@
 ﻿using StockPriceWinodw.Model;
 using System;
+using System.ComponentModel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,23 +8,44 @@ using System.Threading.Tasks;
 using BL;
 using BE;
 using LiveCharts;
+using LiveCharts.Defaults;
+using LiveCharts.Wpf;
 
 namespace StockPriceWinodw.ViewModel
 {
     internal class CoinHistoryViewModel
     {
-        public List<CoinModel> history { get; private set; }
-        private int yAxisSteps = 10;
+        private List<CoinModel> history;
+        private int yAxisSteps = 5;
+        //private ZoomingOptions _zoomingMode = ZoomingOptions.X;
+        //public event PropertyChangedEventHandler PropertyChanged;
+
+        //public ZoomingOptions ZoomingMode
+        //{
+        //    get { return _zoomingMode; }
+        //    set
+        //    {
+        //        _zoomingMode = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
+
+        //protected virtual void OnPropertyChanged(string propertyName = null)
+        //{
+        //    if (PropertyChanged != null) PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //}
 
         public CoinHistoryViewModel()
         {
             history = new List<CoinModel>();
-            history.Add(new CoinModel("s", DateTime.Now, 1));
-            history.Add(new CoinModel("s", DateTime.Now - TimeSpan.FromDays(1), 3));
-            history.Add(new CoinModel("s", DateTime.Now - TimeSpan.FromDays(2), 2));
+            history.Add(new CoinModel("Demo", DateTime.Now, 1)); //well this is dumb but necessery otherwise the application will callapse
+            history.Add(new CoinModel("Demo", DateTime.Now - TimeSpan.FromDays(1), 3));
+            history.Add(new CoinModel("Demo", DateTime.Now - TimeSpan.FromDays(2), 2));
+
+            YFormatter = value => value.ToString("C");
         }
 
-        public CoinHistoryViewModel(string coin,string format)
+        public CoinHistoryViewModel(string coin, string format)
         {
             try
             {
@@ -33,9 +55,22 @@ namespace StockPriceWinodw.ViewModel
                            select new CoinModel(coin, c.date, c.CoinValueId, 0)).ToList();
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 history = new List<CoinModel>();
+                history.Add(new CoinModel("NOT FOUND", DateTime.Now, 1));
+            }
+
+            YFormatter = value => value.ToString("C");
+        }
+
+        public string Coin
+        {
+            get
+            {
+                if (history.Count == 0)
+                    return "";
+                return history.First().coin;
             }
         }
 
@@ -96,6 +131,8 @@ namespace StockPriceWinodw.ViewModel
                                                select c.value);
             }
         }
+
+        public Func<double, string> YFormatter { get; set; }
 
         public override string ToString()
         {
