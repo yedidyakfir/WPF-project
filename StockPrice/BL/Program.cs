@@ -43,10 +43,5 @@ namespace BL
 
             Console.ReadKey();
         }
-        public class CoinContext : DbContext
-        {
-            public DbSet<Coin> Coins { get; set; }
-            public DbSet<CurrentCoinValue> CurrentCoins { get; set; }
-        }
     }
 }
