@@ -11,7 +11,7 @@ using System.Data.Entity;
 using System.Data.SqlClient;
 
 namespace DL
-{//sqlcmd -S YEHUDA\SQLEXPRESS -E
+{
     public class DAL : IDL
     {
         public List<Coin> DB;
@@ -23,37 +23,8 @@ namespace DL
         {
             return new CoinValue(getCurrentCoins().First(d => d.CurrentCoinValueId == coin).value,
                 getCurrentCoins().First(d => d.CurrentCoinValueId == coin).date);
-          /*  if (getCoinHistory(coin) != null &&
-                getCoinHistory(coin).Last().date.Year == DateTime.Now.Year &&
-                getCoinHistory(coin).Last().date.Month == DateTime.Now.Month)
-                return getCoinHistory(coin).Last();
-            try
-            {
-                string url = "http://apilayer.net/api/live?access_key=7017c5933ab8aaa1d0078693a5b1b8a9&currencies=" + coin + "&format=1";
-                WebClient wc = new WebClient();
-                string apiResponse = wc.DownloadString(url);
-                int index = apiResponse.IndexOf("USD" + coin);
-                apiResponse = apiResponse.Substring(index + 8, 8);
-                double value = Double.Parse(apiResponse);
-                value = 1 / value;
-
-                using (var db = new CoinContext())
-                {
-                    List<CoinValue> l = getCoinHistory(coin);
-                    l.Add(new CoinValue(value, DateTime.Now));
-                    db.CoinValues.Add(new CoinValueForDB(coin, value, DateTime.Now));
-                    Save(db);
-                }
-                return new CoinValue(value, DateTime.Now);
-            }
-            catch (Exception)//incase there's a problam with the internet
-            {
-                List<int> l = new List<int>();
-                if (getCoinHistory(coin) != null)
-                    return getCoinHistory(coin).Last();
-                throw new Exception("There is no internet and the coin wasn't saved in the database");
-            }*/
         }
+
         public List<CoinValue> getCoinHistory(string coin)
         {
             try
@@ -85,7 +56,7 @@ namespace DL
                     try
                     { apiResponse = wc.DownloadString(url); }
                     catch { return DB.First(d => d.CoinId == coin).History; }//incase there's a problam with the internet
-                    /////////////////////////////////////////
+
                     int index = apiResponse.IndexOf("USD");
                     apiResponse = apiResponse.Substring(index + 3);
                     index = apiResponse.IndexOf("USD");
@@ -93,7 +64,6 @@ namespace DL
 
                     string name;
                     double value;
-                    //CurrentCoins = new List<CurrentCoinValue>();
 
                     while (index != -1)
                     {
@@ -123,7 +93,6 @@ namespace DL
                         if (index != -1)
                             apiResponse = apiResponse.Substring(index + 3);
                     }
-                    /////////////////////////////////////////
                 }
                 return DB.First(d => d.CoinId == coin).History;
             }
@@ -138,6 +107,7 @@ namespace DL
                 { throw new Exception("There is no internet and the coin wasn't saved in the database"); }           
             }
         }
+
         public List<CurrentCoinValue> getCurrentCoins()
         {
             if ((CurrentCoins.Count !=0) &&
@@ -183,10 +153,6 @@ namespace DL
 
                     if (!DB.Exists(c => c.CoinId == name))
                         DB.Add(new Coin(name, new List<CoinValue>()));
-                    //DB.First(d => d.CoinId == name).History.Add(new CoinValue(value, DateTime.Now));
-                   // using (var db = new CoinContext())
-                     //   { db.CoinValues.Add(new CoinValueForDB(name, (db.CoinValues.Count() == 0)?0:(db.CoinValues.Max(d => d.CoinValueForDBId) + 0.01), value, DateTime.Now)); }
-
                     index = apiResponse.IndexOf("USD");
                     if(index != -1)
                         apiResponse = apiResponse.Substring(index + 3);
@@ -209,43 +175,16 @@ namespace DL
                 catch { throw new Exception("out of keys");  }
             }
         }
+
         public void Save(CoinContext db)
         {
             db.SaveChanges();
-            // WriteToXmlFile<DAL>("DataBase", this);
         }
+
         public void Load()
         {
             using (var db = new CoinContext())
             {
-                //db.CoinValues.RemoveRange(db.CoinValues.Where(d => (d.name == "AUD") || (d.name == "CNY")));
-                //db.CurrentCoins.RemoveRange(db.CurrentCoins.Where(d => (d.CurrentCoinValueId == "AUD") || (d.CurrentCoinValueId == "CNY")));
-                //db.SaveChanges();nn
-                //db.Dispose();
-                /*DAL dal = ReadFromXmlFile<DAL>("DataBase");
-                DB = dal.DB;
-                CurrentCoins = dal.CurrentCoins;
-                  foreach (var coin in dal.DB)
-                  {
-                    if(coin.CoinId != "EUR" && coin.CoinId != "ILS")
-                     // db.Coins.Add(coin);
-                     foreach (var item in coin.History)
-                     {
-                         db.CoinValues.Add(new CoinValueForDB(coin.CoinId,item.CoinValueId,item.date));
-                     }
-                  }
-                  foreach (var currentCoin in dal.CurrentCoins)
-                  {
-                    if (currentCoin.CurrentCoinValueId != "EUR" && currentCoin.CurrentCoinValueId != "ILS")
-                        db.CurrentCoins.Add(currentCoin);
-                  }
-                  db.SaveChanges();*/
-              //  db.CoinValues.RemoveRange(db.CoinValues);
-              //  db.CurrentCoins.RemoveRange(db.CurrentCoins);
-                //  CurrentCoins = new List<CurrentCoinValue>();
-                //  DB = new List<Coin>();
-                //  getCurrentCoins();
-                //getCoinHistory("ILS");
                 Coin c;
                 DB = new List<Coin>();
                 foreach (var i in db.CurrentCoins)
@@ -262,45 +201,5 @@ namespace DL
 
             }
         }
-        /*
-        public static void WriteToXmlFile<T>(string filePath, T objectToWrite, bool append = false) where T : new()
-        {
-            TextWriter writer = null;
-            try
-            {
-                var serializer = new XmlSerializer(typeof(T));
-                writer = new StreamWriter(filePath, append);
-                serializer.Serialize(writer, objectToWrite);
-            }
-            finally
-            {
-                if (writer != null)
-                    writer.Close();
-            }
-        }
-        /// <summary>
-        /// Reads an object instance from an XML file.
-        /// <para>Object type must have a parameterless constructor.</para>
-        /// </summary>
-        /// <typeparam name="T">The type of object to read from the file.</typeparam>
-        /// <param name="filePath">The file path to read the object instance from.</param>
-        /// <returns>Returns a new instance of the object read from the XML file.</returns>
-        public static T ReadFromXmlFile<T>(string filePath) where T : new()
-        {
-            TextReader reader = null;
-            try
-            {
-                var serializer = new XmlSerializer(typeof(T));
-                reader = new StreamReader(filePath);
-                return (T)serializer.Deserialize(reader);
-            }
-            finally
-            {
-                if (reader != null)
-                    reader.Close();
-            }
-        }*/
-
-
     }
 }
