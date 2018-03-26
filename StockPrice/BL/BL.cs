@@ -12,6 +12,7 @@ namespace BL
     class Bl : IBL
     {
         private IDL Dal = new DAL();
+
         public Bl()
         {
             Dal.Load();
@@ -22,6 +23,7 @@ namespace BL
             return Dal.getCoinValue(coin);
         }
 
+        //returns the relation of values between two coins
         public double Relation(string coin1, string coin2, double amount)
         {
             return (getCoinValue(coin1).CoinValueId / getCoinValue(coin2).CoinValueId) * amount;
@@ -47,6 +49,9 @@ namespace BL
             return Dal.getCurrentCoins();
         }
         
+
+        //returns the slope of a coin - calculated recusivly as such:
+        //Slope(Now) = ( (valueNow - vlaueYesterday)/(dateNow - dateYesterday) )*0.1 + Slop(Yesterday)*0.9
         public double GetSlope(string coin)
         {
             return getSlope(coin, new List<CoinValue>(Dal.getCoinHistory(coin)));
