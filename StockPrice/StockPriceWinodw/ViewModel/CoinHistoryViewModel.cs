@@ -13,27 +13,11 @@ using LiveCharts.Wpf;
 
 namespace StockPriceWinodw.ViewModel
 {
+    //this class is responsible for the view logic and connect between the data and the view
     internal class CoinHistoryViewModel
     {
         private List<CoinModel> history;
         private int yAxisSteps = 5;
-        //private ZoomingOptions _zoomingMode = ZoomingOptions.X;
-        //public event PropertyChangedEventHandler PropertyChanged;
-
-        //public ZoomingOptions ZoomingMode
-        //{
-        //    get { return _zoomingMode; }
-        //    set
-        //    {
-        //        _zoomingMode = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
-
-        //protected virtual void OnPropertyChanged(string propertyName = null)
-        //{
-        //    if (PropertyChanged != null) PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        //}
 
         public CoinHistoryViewModel()
         {
@@ -45,6 +29,7 @@ namespace StockPriceWinodw.ViewModel
             YFormatter = valueTostring;// value => value.ToString("C");
         }
 
+        //this function tells the graph how to represent numbers
         private string valueTostring(double val)
         {
             if (val < 0.01)
@@ -62,14 +47,14 @@ namespace StockPriceWinodw.ViewModel
                 history = (from c in BeCoins
                            select new CoinModel(coin, c.date, c.CoinValueId, 0)).ToList();
 
-                if(history.Count == 1) //precaution for break mode 
+                if(history.Count == 1) //precaution for break mode ,if the graph has only single value (y = 4 for example) the code will enter break mode 
                 {
                     CoinModel tempC = history.First();
                     history.Add(new CoinModel(tempC.coin, tempC.lastUpdate - TimeSpan.FromDays(1), tempC.value + 0.0000001));
                     history.Add(new CoinModel(tempC.coin, tempC.lastUpdate - TimeSpan.FromDays(2), tempC.value));
                 }
 
-                if(FactoryBL.get().GetSlope(coin) == 0)
+                if(FactoryBL.get().GetSlope(coin) == 0) //another reprecaution for break mode ,so the graph won't have only 1 value and enter a break mode
                 {
                     CoinModel tempC = history.First();
                     history.Remove(tempC);

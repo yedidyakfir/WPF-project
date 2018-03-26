@@ -27,11 +27,12 @@ namespace StockPriceWinodw.View
         public MainViewUC()
         {
             InitializeComponent();
-            CurrencyList.PropertyChanged += ChangeCurrency;
+            CurrencyList.PropertyChanged += ChangeCurrency; //add event to switch graph
             originCoin.DataContext = new CoinsViewModel();
             destinationCoin.DataContext = originCoin.DataContext;
         }
 
+        //switch graph data
         internal void ChangeCurrency(object coinObj, PropertyChangedEventArgs arg)
         {
             if (!(coinObj is CoinModel))

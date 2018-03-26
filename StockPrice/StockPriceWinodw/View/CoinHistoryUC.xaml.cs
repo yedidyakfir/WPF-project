@@ -49,6 +49,7 @@ namespace StockPriceWinodw.View
                DataContext = new CoinHistoryViewModel(coin, format);
         }
 
+        //syncronize function to change data or format
         public async void ChangeCoin(string c, string f = "day")
         {
             coin = c;

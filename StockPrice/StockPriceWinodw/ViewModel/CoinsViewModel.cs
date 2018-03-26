@@ -11,6 +11,7 @@ using StockPriceWinodw.Model;
 
 namespace StockPriceWinodw.ViewModel
 {
+    //this class is responsible for the view logic and connect between the data and the view
     internal class CoinsViewModel 
     {
         public List<CoinModel> Coins { get; set; }
@@ -23,7 +24,6 @@ namespace StockPriceWinodw.ViewModel
             {
                 // transform this list to coinModel list
                 setCoins();
-
             }
             catch(Exception ex)
             {

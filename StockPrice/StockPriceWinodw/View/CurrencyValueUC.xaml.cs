@@ -30,6 +30,7 @@ namespace StockPriceWinodw.View
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        //alert others to the change
         private void syncgrid_SelectionChanged(object sender, Syncfusion.UI.Xaml.Grid.GridSelectionChangedEventArgs e)
         {
             if (this.PropertyChanged != null)
