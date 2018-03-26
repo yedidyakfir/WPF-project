@@ -33,6 +33,21 @@ namespace DL
         {
             try
             {
+                //so that we won't have to store USD in the DataBase
+                if(coin == "USD")
+                {
+                    List<CoinValue> list = new List<CoinValue>();
+                    DateTime year = DateTime.Now.AddYears(-1);
+                    while (!(year.Day == DateTime.Now.Day &&
+                        year.Year == DateTime.Now.Year &&
+                        year.Month == DateTime.Now.Month))
+                    {
+                        year = year.AddDays(1);
+                        list.Add(new CoinValue(1, year));
+                    }
+                    return list;
+                }
+
                 if(DB.Count != 0 && DB.First().History.Count != 0) // if the DataBase is Up to date - we return the history in the DataBase
                     if ((DB.First().History.Max(d => d.date).Day == DateTime.Now.Day ||
                         DB.First().History.Max(d => d.date).Day == DateTime.Now.Day-1) &&
@@ -124,7 +139,8 @@ namespace DL
         //we return the current value of all coins (if there is no internet - we return the lastest in the DataBase
         public List<CurrentCoinValue> getCurrentCoins()
         {
-            if ((CurrentCoins.Count !=0) && // if the DataBase is Up to date - we return the CurrentCoins 
+
+            if ((CurrentCoins.Count > 1) && // if the DataBase is Up to date - we return the CurrentCoins 
                 CurrentCoins.First().date.Day == DateTime.Now.Day &&
                 CurrentCoins.First().date.Year == DateTime.Now.Year &&
                 CurrentCoins.First().date.Month == DateTime.Now.Month)
@@ -219,7 +235,8 @@ namespace DL
                     DB.Add(c);
                 }
                 CurrentCoins = db.CurrentCoins.ToList();
-
+                if(!CurrentCoins.Exists(d => d.CurrentCoinValueId == "USD"))
+                    CurrentCoins.Add(new CurrentCoinValue("USD", 1, DateTime.Now));
             }
         }
     }

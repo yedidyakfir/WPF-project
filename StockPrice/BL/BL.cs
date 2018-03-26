@@ -20,6 +20,8 @@ namespace BL
 
         public CoinValue getCoinValue(string coin)
         {
+            if (coin == "USD")
+                return new CoinValue(1,DateTime.Now);
             return Dal.getCoinValue(coin);
         }
 
